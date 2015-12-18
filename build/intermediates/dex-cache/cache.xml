@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="G:\studio_project_21_10_2015\currencyconverter\CurrencyConverter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="G:\studio_project_21_10_2015\currencyconverter\CurrencyConverter\app\build\intermediates\pre-dexed\release\classes-b9d0689a2c8500203a8eac29ff13607cede11432.jar" />
+    </item>
+    <item
+        jar="G:\studio_project_21_10_2015\currencyconverter\CurrencyConverter\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="G:\studio_project_21_10_2015\currencyconverter\CurrencyConverter\app\build\intermediates\pre-dexed\release\classes-0bf1d1e2018f491b50758a63e5ae5011ca4f2121.jar" />
+    </item>
+    <item
+        jar="G:\studio_project_21_10_2015\currencyconverter\CurrencyConverter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="997773777cf3904c11d6764fe3b7668538220e49">
+        <dex dex="G:\studio_project_21_10_2015\currencyconverter\CurrencyConverter\app\build\intermediates\pre-dexed\release\classes-b53e58b4c9e7ad72438229d5945f7a9ac61b8b0c.jar" />
+    </item>
+    <item
+        jar="G:\studio_project_21_10_2015\currencyconverter\CurrencyConverter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="G:\studio_project_21_10_2015\currencyconverter\CurrencyConverter\app\build\intermediates\pre-dexed\release\classes-4f8d79e37f6c30aecf5f639e17d93f8e1b480132.jar" />
+    </item>
+    <item
+        jar="C:\android_sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="G:\studio_project_21_10_2015\currencyconverter\CurrencyConverter\app\build\intermediates\pre-dexed\release\support-annotations-23.1.0-fc6e3bb5cd52488ddf0f1a0faffd64de93a508ad.jar" />
+    </item>
+    <item
+        jar="G:\studio_project_21_10_2015\currencyconverter\CurrencyConverter\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="G:\studio_project_21_10_2015\currencyconverter\CurrencyConverter\app\build\intermediates\pre-dexed\release\internal_impl-23.1.0-28c65f052b95ccc27fa0c750c6ba703d19d0d00c.jar" />
+    </item>
+
+</items>

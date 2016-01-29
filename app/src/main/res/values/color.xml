@@ -2,5 +2,23 @@
 <resources>
     <color name="golden">#fca603</color>
     <color name="Grey">#525C65</color>
-    
+    <color name="accent">#525C65</color>
+    <color name="transparent">#00000000</color>
+    <color name="black_20">#33000000</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+
+    <color name="default_toolbar">#086F9C</color>
+    <color name="default_bg">#3A579B</color>
+    <color name="default_card">#1782A5</color>
+
+
+    <color name="yellow_bg">#D7DB9A</color>
+
+    <color name="green_bg">#6D8F8F</color>
+
+    <color name="offline_bg">#EEEEEE</color>
+
 </resources>

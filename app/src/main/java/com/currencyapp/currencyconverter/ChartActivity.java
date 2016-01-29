@@ -1,102 +1,116 @@
 package com.currencyapp.currencyconverter;
 
-import java.io.InputStream;
-import java.net.URL;
-
-import com.currencyapp.currencyconverter.MainActivity.MAPS;
-import com.currencyapp.currencyconverter.R;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-
-import android.view.Gravity;
-
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.widget.RelativeLayout;
 
-public class ChartActivity extends Activity{
-	
-	private ImageView imgchart;
-	private String time, spinnerone, spinnertwo;
-	com.google.android.gms.ads.AdRequest adRequest;
-	private String url = "http://chart.finance.yahoo.com/z?s=";
-	//GBPINR=x&t=3m&q=l&l=on&z=m";
-	private String sub_url = "&q=l&l=on&z=m";
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_chart);
-		AdView adView = (AdView) findViewById(R.id.adView);
-		// Request for Ads
-		adRequest = new com.google.android.gms.ads.AdRequest.Builder()
-				.build();
-		adView.loadAd(adRequest);
+import com.currencyapp.currencyconverter.util.CountryUtil;
+import com.currencyapp.currencyconverter.util.YahooAPi;
+import com.google.android.gms.ads.AdSize;
 
-		//addmob();
-		
-		Bundle extras = getIntent().getExtras();
-		if (extras != null) {
-			spinnerone = extras.getString("spinnerone");
-			spinnertwo = extras.getString("spinnertwo");
-		    time = extras.getString("Time");
-		}
-		
-		imgchart = (ImageView) findViewById(R.id.imageView_chart);
-		
-		/*try {
-			Bitmap bitmap_skip = BitmapFactory.decodeStream((InputStream) 
-					new URL()
-			.getContent());
-			imgchart.setImageBitmap(bitmap_skip);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
-		new MAPS(time,imgchart).execute();
-		
-	}
-	
-	private void addmob() {
-		com.google.android.gms.ads.AdView adView = new com.google.android.gms.ads.AdView(ChartActivity.this);
-		adView.setAdUnitId("ca-app-pub-6733180445570119/3279220380");
-		adView.setAdSize(AdSize.BANNER);
-		RelativeLayout layout = (RelativeLayout)findViewById(R.id.addmob_chart);        
-		layout.addView(adView);
-		layout.setGravity(Gravity.CENTER);
-		com.google.android.gms.ads.AdRequest request = new com.google.android.gms.ads.AdRequest.Builder().build();
-		adView.loadAd(request);
-	}
-	
-	public class MAPS extends AsyncTask<String,String,String>{
-		String time;
-		ImageView img;
-		Bitmap bitmap_skip;
-		public MAPS(String string, ImageView iv) {
-			time = string;
-			img = iv;
-		}
 
-		@Override
-		protected String doInBackground(String... params) {
-			try {
-				bitmap_skip = BitmapFactory.decodeStream((InputStream) 
-						new URL(url+spinnerone+spinnertwo+"=x&t="+time+sub_url)
-				.getContent());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return null;
-		}
-		@Override
-		protected void onPostExecute(String result) {
-			img.setImageBitmap(bitmap_skip);
-			super.onPostExecute(result);
-		}
+public class ChartActivity extends AppCompatActivity {
 
-	}
+    private String time, spinnerone, spinnertwo;
+    com.google.android.gms.ads.AdRequest adRequest;
+    private String url = "http://chart.finance.yahoo.com/z?s=";
+    //GBPINR=x&t=3m&q=l&l=on&z=m";
+    private String sub_url = "&q=l&l=on&z=m";
+    private ViewPager mViewPager;
+    private TabLayout tabLayout;
+    private ImageAdapter mImageAdapter;
+    int mPosition = 2;
+    private Country fromCountry;
+    private Country toCountry;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chart);
+        viewPager();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        changeRateFlag();
+    }
+
+    private void viewPager() {
+
+        getDataFromIntent();
+        mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        mImageAdapter = new ImageAdapter(getSupportFragmentManager());
+
+        for (int i = 0; i < YahooAPi.maps.length; i++) {
+
+            String s = YahooAPi.maps[i];
+            mImageAdapter.addFragment(ImageFragment.newInstance(i, s), s);
+        }
+
+        mViewPager.setAdapter(mImageAdapter);
+        mViewPager.setCurrentItem(mPosition);
+        mViewPager.setOffscreenPageLimit(2);
+        tabLayout.setupWithViewPager(mViewPager);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                changeRateFlag();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+    }
+
+    private void getDataFromIntent() {
+
+        Intent intent = getIntent();
+        mPosition = intent.getIntExtra(Intent.EXTRA_UID, 2);
+    }
+
+
+    private void addmob() {
+        com.google.android.gms.ads.AdView adView = new com.google.android.gms.ads.AdView(ChartActivity.this);
+        adView.setAdUnitId("ca-app-pub-6733180445570119/3279220380");
+        adView.setAdSize(AdSize.BANNER);
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.addmob_chart);
+        layout.addView(adView);
+        layout.setGravity(Gravity.CENTER);
+        com.google.android.gms.ads.AdRequest request = new com.google.android.gms.ads.AdRequest.Builder().build();
+        adView.loadAd(request);
+    }
+
+    private void changeRateFlag() {
+
+        fromCountry = CountryUtil.getFromCountry(this);
+        toCountry = CountryUtil.getToCountry(this);
+
+        Fragment fragment = mImageAdapter.getItem(mViewPager.getCurrentItem());
+        if (fragment instanceof ImageFragment) {
+
+            ImageFragment imageFragment = (ImageFragment) fragment;
+            String time = YahooAPi.maps[mViewPager.getCurrentItem()];
+            String url = String.format("http://chart.finance.yahoo.com/z?s=%s%s=x&t=%s&q=l&m=on&z=l", fromCountry.shortName, toCountry.shortName, time);
+            imageFragment.changeImage(url);
+
+        }
+
+    }
+
 
 }

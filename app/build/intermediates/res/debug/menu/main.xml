@@ -1,9 +1,11 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"/>
+        android:title="@string/action_settings"
+
+        app:showAsAction="never" />
 
 </menu>
-<!-- From: file:/G:/studio_project_21_10_2015/currencyconverter/CurrencyConverter/app/src/main/res/menu/main.xml -->
+<!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/src/main/res/menu/main.xml -->

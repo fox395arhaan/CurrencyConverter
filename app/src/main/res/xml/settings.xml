@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <PreferenceCategory android:title="@string/pref_online_setting">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_offline"
+            android:summary="@string/pref_offline_mode_summary"
+            android:title="@string/pref_offline_mode"></CheckBoxPreference>
+
+    </PreferenceCategory>
+
+
+
+    <PreferenceCategory android:title="@string/pref_Theme">
+
+        <ListPreference
+            android:defaultValue="0"
+            android:key="prefTheme"
+            android:entries="@array/Theme"
+            android:summary="@string/pref_theme_summary"
+            android:entryValues="@array/ThemeValues"
+            android:title="@string/pref_Theme_title" />
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_Ad_Settings">
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

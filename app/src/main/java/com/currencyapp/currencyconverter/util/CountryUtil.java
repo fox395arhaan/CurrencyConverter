@@ -6,9 +6,13 @@ import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,6 +31,7 @@ import java.util.Date;
 public class CountryUtil {
 
 
+    public static final String adInterstitial = "ca-app-pub-6733180445570119/8404505582";
     public static final String isDefaultSet = "isDefaultSet";
     public static final String fromCountry = "fromCountry";
     public static final String ToCountry = "ToCountry";
@@ -36,7 +41,7 @@ public class CountryUtil {
     public static final String UpdateData = "UpdateData";
     public static final String IsfirstTime = "IsfirstTime";
     static Gson gson = MyApplication.getInstance().getGson();
-    static SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy HH:mm");
+    static SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy HH:mm aa");
 
     public static void setDefault(Context context, boolean isDefault) {
         Prefs.with(context).save(isDefaultSet, isDefault);
@@ -54,7 +59,9 @@ public class CountryUtil {
         return Prefs.with(context).getString(FromValue, "1");
     }
 
-    public static void setDateAndTime(Context context, String value) {
+    public static void setDateAndTime(Context context) {
+        Date date = new Date();
+        String value = sdf.format(date);
         Prefs.with(context).save(DateTime, value);
     }
 
@@ -175,50 +182,102 @@ public class CountryUtil {
         Resources resource = activity.getResources();
 
 
-        if (type == 0) {
-            toolbar.setBackgroundColor(resource.getColor(R.color.default_toolbar));
-            mainLinearLayout.setBackgroundColor(resource.getColor(R.color.default_bg));
-            fromHolderCard.setCardBackgroundColor(resource.getColor(R.color.default_card));
-            toHolderCard.setCardBackgroundColor(resource.getColor(R.color.default_card));
-            txtFrom.setTextColor(resource.getColor(R.color.black));
-            txtTo.setTextColor(resource.getColor(R.color.black));
-            edtFrom.setBackgroundDrawable(resource.getDrawable(R.drawable.rect_edit_text));
-            edtTo.setBackgroundDrawable(resource.getDrawable(R.drawable.rect_edit_text));
-        } else {
-
-            fromHolderCard.setCardBackgroundColor(resource.getColor(R.color.white));
-            toHolderCard.setCardBackgroundColor(resource.getColor(R.color.white));
-            txtFrom.setTextColor(resource.getColor(R.color.black));
-            txtTo.setTextColor(resource.getColor(R.color.black));
-            edtFrom.setBackgroundDrawable(resource.getDrawable(R.drawable.rect_edit_text_white));
-            edtTo.setBackgroundDrawable(resource.getDrawable(R.drawable.rect_edit_text_white));
-
-            switch (type) {
+        fromHolderCard.setCardBackgroundColor(resource.getColor(R.color.white));
+        toHolderCard.setCardBackgroundColor(resource.getColor(R.color.white));
+        txtFrom.setTextColor(resource.getColor(R.color.textColor));
+        txtTo.setTextColor(resource.getColor(R.color.textColor));
+        edtFrom.setBackgroundDrawable(resource.getDrawable(R.drawable.rect_edit_text_white));
+        edtTo.setBackgroundDrawable(resource.getDrawable(R.drawable.rect_edit_text_white));
+        edtFrom.setTextColor(resource.getColor(R.color.textColor));
+        edtTo.setTextColor(resource.getColor(R.color.textColor));
 
 
-                case 1:
-                    toolbar.setBackgroundColor(resource.getColor(R.color.yellow_bg));
-                    mainLinearLayout.setBackgroundColor(resource.getColor(R.color.yellow_bg));
-
-                    break;
+        switch (type) {
 
 
-                case 2:
-                    toolbar.setBackgroundColor(resource.getColor(R.color.green_bg));
-                    mainLinearLayout.setBackgroundColor(resource.getColor(R.color.green_bg));
+            case 0:
+                toolbar.setBackgroundColor(resource.getColor(R.color.default_toolbar));
+                mainLinearLayout.setBackgroundColor(resource.getColor(R.color.offline_bg));
+                setStatusBarColor(activity, resource.getColor(R.color.default_statusbar));
+                imgViceversa.setColorFilter(resource.getColor(R.color.textColor));
+                break;
+            case 1:
+                toolbar.setBackgroundColor(resource.getColor(R.color.yellow_bg));
+                mainLinearLayout.setBackgroundColor(resource.getColor(R.color.yellow_bg));
+                setStatusBarColor(activity, resource.getColor(R.color.yellow_statusbar));
+                imgViceversa.setColorFilter(resource.getColor(R.color.white));
+                break;
 
-                    break;
+
+            case 2:
+                toolbar.setBackgroundColor(resource.getColor(R.color.green_bg));
+                mainLinearLayout.setBackgroundColor(resource.getColor(R.color.green_bg));
+                setStatusBarColor(activity, resource.getColor(R.color.green_statusbar));
+                imgViceversa.setColorFilter(resource.getColor(R.color.white));
+                break;
 
 
-                case 3:
-                    toolbar.setBackgroundColor(resource.getColor(R.color.default_toolbar));
-                    mainLinearLayout.setBackgroundColor(resource.getColor(R.color.offline_bg));
-
-                    break;
-            }
+            case 3:
+                toolbar.setBackgroundColor(resource.getColor(R.color.default_toolbar));
+                mainLinearLayout.setBackgroundColor(resource.getColor(R.color.offline_bg));
+                setStatusBarColor(activity, resource.getColor(R.color.default_statusbar));
+                imgViceversa.setColorFilter(resource.getColor(R.color.textColor));
+                break;
         }
+
 
     }
 
 
+    public static void setAddToFavTheme(int type, Activity activity, Toolbar toolbar, LinearLayout mainLayout, Button btnShow) {
+
+
+        Resources resource = activity.getResources();
+
+        mainLayout.setBackgroundColor(resource.getColor(R.color.offline_bg));
+
+        switch (type) {
+
+
+            case 0:
+                //mainLayout.setBackgroundColor(resource.getColor(R.color.default_bg));
+                toolbar.setBackgroundColor(resource.getColor(R.color.default_toolbar));
+                btnShow.setBackgroundColor(resource.getColor(R.color.default_toolbar));
+                setStatusBarColor(activity, resource.getColor(R.color.default_statusbar));
+                break;
+
+            case 1:
+                toolbar.setBackgroundColor(resource.getColor(R.color.yellow_bg));
+                btnShow.setBackgroundColor(resource.getColor(R.color.yellow_bg));
+                // mainLayout.setBackgroundColor(resource.getColor(R.color.yellow_bg));
+                setStatusBarColor(activity, resource.getColor(R.color.yellow_statusbar));
+                break;
+
+
+            case 2:
+                toolbar.setBackgroundColor(resource.getColor(R.color.green_bg));
+                btnShow.setBackgroundColor(resource.getColor(R.color.green_bg));
+                // mainLayout.setBackgroundColor(resource.getColor(R.color.green_bg));
+                setStatusBarColor(activity, resource.getColor(R.color.green_statusbar));
+                break;
+
+
+            case 3:
+                toolbar.setBackgroundColor(resource.getColor(R.color.default_toolbar));
+                btnShow.setBackgroundColor(resource.getColor(R.color.default_toolbar));
+                setStatusBarColor(activity, resource.getColor(R.color.default_statusbar));
+
+                break;
+        }
+    }
+
+    private static void setStatusBarColor(Activity activity, int mStatusBarColor) {
+
+        Window window = activity.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(mStatusBarColor);
+        }
+    }
 }

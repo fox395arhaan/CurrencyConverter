@@ -12,16 +12,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.currencyapp.currencyconverter.Model.Rate;
 import com.currencyapp.currencyconverter.Model.YahooFinanceReal;
+import com.currencyapp.currencyconverter.Temp.TempActivity;
 import com.currencyapp.currencyconverter.util.CountryUtil;
 import com.currencyapp.currencyconverter.util.DatabaseHandler;
 import com.currencyapp.currencyconverter.util.Interfaces;
 import com.currencyapp.currencyconverter.util.MyApplication;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.ArrayList;
 
@@ -50,6 +57,9 @@ public class FavDeailsFragment extends Fragment {
     private Rate fromRate;
     private Interfaces.YahoofinanceReal yahoofinanceReal;
     // private ProgressDialog progressDialog;
+    InterstitialAd mInterstitialAd;
+    int counter = 0;
+    private TempActivity tempActivity;
 
     public FavDeailsFragment() {
         // Required empty public constructor
@@ -63,6 +73,7 @@ public class FavDeailsFragment extends Fragment {
         databaseHandler = new DatabaseHandler(getActivity());
         //progressDialog = ProgressDialog.show(getActivity(), "Please wait", "Updating Rates");
         // progressDialog.dismiss();
+        tempActivity = (TempActivity) getActivity();
 
     }
 
@@ -71,6 +82,7 @@ public class FavDeailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_fav_deails, container, false);
+        ads();
         init(rootView);
         return rootView;
     }
@@ -89,8 +101,8 @@ public class FavDeailsFragment extends Fragment {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
             countries = databaseHandler.getAllContries(true);
-            getUserSettings();
-            getFavCountryList();
+
+            getFavCountryList(false);
 
         }
     }
@@ -107,8 +119,10 @@ public class FavDeailsFragment extends Fragment {
     }
 
 
-    private void getFavCountryList() {
+    public void getFavCountryList(final boolean isAnimated) {
 
+
+        getUserSettings();
 
         new android.os.Handler().post(new Runnable() {
             @Override
@@ -121,12 +135,15 @@ public class FavDeailsFragment extends Fragment {
                 if (!isOffline) {
 
                     if (!CountryUtil.isConnected(getActivity())) {
-
-                        CountryUtil.showErrorAlert(getActivity(), "No Internet Connection.Please enable offline mode.");
+                        // CountryUtil.showErrorAlert(getActivity(), "No Internet Connection.Please enable offline mode.");
                         // progressDialog.dismiss();
+                        isOffline = true;
+                        countryName = getCountryQuery(usd);
+                        getRateOffLine(countryName);
+
                     } else {
                         countryName = getCountryQuery(fromCountry.shortName.toUpperCase());
-                        getRateOnline(countryName);
+                        getRateOnline(countryName, isAnimated);
                     }
 
                 } else {
@@ -141,7 +158,12 @@ public class FavDeailsFragment extends Fragment {
 
     }
 
-    private void getRateOnline(String countryName) {
+    private void getRateOnline(String countryName, final boolean isAnimate) {
+
+        final ImageView imageView = tempActivity.refresh;
+        final Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.rotation);
+        imageView.startAnimation(animation);
+
         String query = "select * from yahoo.finance.xchange where pair in (" + countryName + ")";
         yahoofinanceReal = MyApplication.getRetrofit().create(Interfaces.YahoofinanceReal.class);
         Call<YahooFinanceReal> yahooFinanceRealCall = yahoofinanceReal.getCurrency(query);
@@ -158,11 +180,17 @@ public class FavDeailsFragment extends Fragment {
                     //progressDialog.dismiss();
                 }
                 // progressDialog.dismiss();
+                CountryUtil.setDateAndTime(getActivity());
+                tempActivity.setLastUpdatedText();
+                imageView.clearAnimation();
+
             }
 
             @Override
             public void onFailure(Throwable t) {
-                //progressDialog.dismiss();
+
+                imageView.clearAnimation();
+
             }
         });
 
@@ -175,7 +203,13 @@ public class FavDeailsFragment extends Fragment {
             databaseHandler = new DatabaseHandler(getActivity());
         }
         rates = databaseHandler.getRateArrayList(countryName);
-        mAdapter.setCountries(countries);
+        if (rates.size() > 0) {
+
+            mAdapter.setCountries(countries);
+        } else {
+
+            Toast.makeText(getActivity(), "Turn on data Connection and Refresh the data.", Toast.LENGTH_SHORT).show();
+        }
         //progressDialog.dismiss();
     }
 
@@ -233,6 +267,11 @@ public class FavDeailsFragment extends Fragment {
         @Override
         public void onBindViewHolder(final AddToFavViewHolder holder, final int position) {
 
+            if (position != 0 && position % 10 == 0) {
+
+                showAd();
+                //Toast.makeText(AddToFavActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+            }
             final Country country = countries.get(position);
             Rate rate = rates.get(position);
             holder.flag.setImageResource(CountryUtil.getResourceId(getActivity(), "flag_" + country.shortName.toLowerCase()));
@@ -240,8 +279,17 @@ public class FavDeailsFragment extends Fragment {
             double v = Double.valueOf(CountryUtil.getFromValue(getActivity()));
 
             if (!isOffline) {
-                holder.tvbaseValue.setText(String.format("%s %s= %.4f %s", "1", fromCountry.shortName.toUpperCase(), Double.valueOf(rate.Rate), country.shortName.toUpperCase()));
-                holder.tvValue.setText(String.format("%.4f", v * Double.valueOf(rate.Rate)));
+
+                Double finalerate = 0.0;
+                Double finalerate2 = 0.0;
+                if (rate.Rate != null && !rate.Rate.equalsIgnoreCase("N/A")) {
+
+                    finalerate = Double.valueOf(rate.Rate);
+                    finalerate2 = v * finalerate;
+                }
+
+                holder.tvbaseValue.setText(String.format("%s %s= %.4f %s", "1", fromCountry.shortName.toUpperCase(), finalerate, country.shortName.toUpperCase()));
+                holder.tvValue.setText(String.format("%.4f", finalerate2));
             } else {
                 double Fromrate = calCulateRate(rate);
                 holder.tvbaseValue.setText(String.format("%s %s= %.4f %s", "1", fromCountry.shortName.toUpperCase(), Fromrate, country.shortName.toUpperCase()));
@@ -260,14 +308,18 @@ public class FavDeailsFragment extends Fragment {
     }
 
     private double calCulateRate(Rate rate) {
-        double finalRate = Double.valueOf(rate.Rate);
-        if (!fromCountry.shortName.equalsIgnoreCase(usd)) {
-            double fRate = Double.valueOf(fromRate.Rate);
-            double toRate = Double.valueOf(rate.Rate);
-            finalRate = (toRate / fRate);
+        double finalRate = 0;
+        if (rate.Rate != null && !rate.Rate.equalsIgnoreCase("N/A")) {
+
+            finalRate = Double.valueOf(rate.Rate);
+            if (!fromCountry.shortName.equalsIgnoreCase(usd)) {
+                double fRate = Double.valueOf(fromRate.Rate);
+                double toRate = Double.valueOf(rate.Rate);
+                finalRate = (toRate / fRate);
+
+            }
 
         }
-
         return finalRate;
     }
 
@@ -286,6 +338,39 @@ public class FavDeailsFragment extends Fragment {
 
             flag = (ImageView) itemView.findViewById(R.id.flag);
             mainHolder = (CardView) itemView.findViewById(R.id.mainHolder);
+        }
+    }
+
+    private void ads() {
+
+        mInterstitialAd = new InterstitialAd(getActivity());
+        mInterstitialAd.setAdUnitId(CountryUtil.adInterstitial);
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+
+            }
+        });
+
+        requestNewInterstitial();
+
+    }
+
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
+
+
+    }
+
+    private void showAd() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
         }
     }
 

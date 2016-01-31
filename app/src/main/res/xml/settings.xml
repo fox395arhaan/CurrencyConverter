@@ -4,7 +4,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-
     <PreferenceCategory android:title="@string/pref_online_setting">
         <CheckBoxPreference
             android:defaultValue="false"
@@ -15,18 +14,27 @@
     </PreferenceCategory>
 
 
-
     <PreferenceCategory android:title="@string/pref_Theme">
 
         <ListPreference
             android:defaultValue="0"
-            android:key="prefTheme"
             android:entries="@array/Theme"
-            android:summary="@string/pref_theme_summary"
             android:entryValues="@array/ThemeValues"
+            android:key="prefTheme"
+            android:summary="@string/pref_theme_summary"
             android:title="@string/pref_Theme_title" />
 
 
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="@string/pref_contact_developer">
+
+        <Preference android:title="Contact Developer"
+            android:key="mail"
+            >
+
+        </Preference>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_Ad_Settings">

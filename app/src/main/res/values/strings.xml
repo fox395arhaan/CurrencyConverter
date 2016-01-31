@@ -1013,6 +1013,9 @@
         <item>VEF</item>
         <item>VND</item>
         <item>YER</item>
+        <item>ZMK</item>
+        <item>ZWD</item>
+
     </string-array>
 
     <string-array name="conturiesfullName">
@@ -1192,7 +1195,8 @@
         <item>  Venezuelan Bolivar Fuerte</item>
         <item>  Vietnamese Dong</item>
         <item>  Yemeni Rial</item>
-
+        <item>  Zambian Kwacha</item>
+        <item>  Zimbabwean Dollar</item>
 
     </string-array>
 
@@ -1202,11 +1206,15 @@
 
 
     <string name="pref_Ad_Settings">Remove Ads(coming soon)</string>
-    <string name="pref_Theme">UI Setting</string>
+    <string name="pref_contact_developer">Developer Setting</string>
+    <string name="pref_Theme">Appearance Setting</string>
     <string name="pref_online_setting">Online Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="pref_theme_summary">Set the theme</string>
     <string name="pref_Theme_title">Theme</string>
+    <string name="action_share">Share</string>
+    <string name="action_rate">Rate</string>
+    <string name="checkout">Check Out</string>
 </resources>

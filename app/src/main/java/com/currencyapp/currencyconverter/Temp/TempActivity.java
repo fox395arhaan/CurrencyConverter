@@ -1,8 +1,10 @@
 package com.currencyapp.currencyconverter.Temp;
 
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
@@ -11,7 +13,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,6 +25,7 @@ import com.currencyapp.currencyconverter.CurrencyFragment;
 import com.currencyapp.currencyconverter.FavDeailsFragment;
 import com.currencyapp.currencyconverter.R;
 import com.currencyapp.currencyconverter.util.CountryUtil;
+import com.currencyapp.currencyconverter.widget.CustomTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +37,12 @@ public class TempActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPagerAdapter adapter;
     private ViewPager viewPager;
-    public AppCompatTextView lastUpdated;
+    public CustomTextView lastUpdated;
     public ImageView refresh;
 
     private int[] tabIcons = {
             R.drawable.ccex,
-            R.drawable.like,
+            R.drawable.ic_christmas_star,
 
     };
     private boolean isOffline = false;
@@ -99,8 +101,13 @@ public class TempActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-
                 startActivity(new Intent(this, SettingActivity.class));
+                return true;
+            case R.id.action_share:
+                shareIt();
+                return true;
+            case R.id.action_rate:
+                rateit();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -111,12 +118,11 @@ public class TempActivity extends AppCompatActivity {
 
     private void initToolBar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        lastUpdated = (AppCompatTextView) toolbar.findViewById(R.id.lastUpdated);
+        lastUpdated = (CustomTextView) toolbar.findViewById(R.id.lastUpdated);
         refresh = (ImageView) toolbar.findViewById(R.id.refresh);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
 
 
         lastUpdated.setText(String.format("Last Updated %s", CountryUtil.getDateAndTime(this)));
@@ -124,17 +130,33 @@ public class TempActivity extends AppCompatActivity {
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = adapter.getItem(viewPager.getCurrentItem());
-                if (fragment instanceof CurrencyFragment) {
 
-                    if (!isOffline) {
-                        CurrencyFragment currencyFragment = (CurrencyFragment) fragment;
-                        currencyFragment.callWebServiceAll();
+                if (!isOffline) {
+
+                    if (!CountryUtil.isConnected(TempActivity.this)) {
+                        Toast.makeText(TempActivity.this, "Turn on data connection.", Toast.LENGTH_SHORT).show();
+
                     } else {
 
-                        Toast.makeText(TempActivity.this, "Turn off the offline mode.", Toast.LENGTH_SHORT).show();
 
+                        Fragment fragment = adapter.getItem(viewPager.getCurrentItem());
+                        if (fragment instanceof CurrencyFragment) {
+
+                            CurrencyFragment currencyFragment = (CurrencyFragment) fragment;
+                            currencyFragment.callWebServiceAll();
+
+                        } else if (fragment instanceof FavDeailsFragment) {
+
+                            FavDeailsFragment favDeailsFragment = (FavDeailsFragment) fragment;
+                            favDeailsFragment.getFavCountryList(true);
+
+                        }
                     }
+
+                } else {
+
+                    Toast.makeText(TempActivity.this, "Turn on data connection.\n Turn off the offline mode.", Toast.LENGTH_SHORT).show();
+
                 }
 
 
@@ -147,8 +169,8 @@ public class TempActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new CurrencyFragment(), "CURRENCY");
-        adapter.addFragment(new FavDeailsFragment(), "FAVORITES");
+        adapter.addFragment(new CurrencyFragment(), "Currency");
+        adapter.addFragment(new FavDeailsFragment(), "Favorites");
         viewPager.setAdapter(adapter);
     }
 
@@ -177,13 +199,38 @@ public class TempActivity extends AppCompatActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
+            String title = mFragmentTitleList.get(position).toLowerCase();
+            String cap = title.substring(0, 1).toUpperCase() + title.substring(1);
+            return cap;
         }
     }
 
     public void setLastUpdatedText() {
 
         lastUpdated.setText(String.format("Last Updated %s", CountryUtil.getDateAndTime(this)));
+
+    }
+
+
+    private void shareIt() {
+        String appPackageName = getPackageName();
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("text/plain");
+        i.putExtra(Intent.EXTRA_TEXT, "http://play.google.com/store/apps/details?id=" + appPackageName);
+        i.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.checkout));
+        startActivity(Intent.createChooser(i, "Share"));
+    }
+
+
+    private void rateit() {
+
+        Uri uri = Uri.parse("market://details?id=" + getPackageName());
+        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+        try {
+            startActivity(goToMarket);
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
+        }
 
     }
 

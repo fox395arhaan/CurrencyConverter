@@ -10,10 +10,7 @@ import android.util.Log;
 import com.currencyapp.currencyconverter.Country;
 import com.currencyapp.currencyconverter.Model.Rate;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -139,23 +136,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             values.put(KEY_Time, rate.Time);
             values.put(KEY_Ask, rate.Ask);
             db.insert(TABLE_rate, null, values);
-            if (!isDateSet) {
-                if (rate.Date != null && rate.Time != null) {
-                    //"1/23/2016"
-                    SimpleDateFormat formatter = new SimpleDateFormat("M/dd/yyyy");
-                    SimpleDateFormat formatter2 = new SimpleDateFormat("dd MMM yyyy");
-                    try {
-                        Date date = formatter.parse(rate.Date);
-                        String formatted = formatter2.format(date);
-                        formatted = formatted + " " + rate.Time;
-                        CountryUtil.setDateAndTime(context, formatted);
-                        isDateSet = true;
-
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+//            if (!isDateSet) {
+//                if (rate.Date != null && rate.Time != null) {
+//                    //"1/23/2016"
+//                    SimpleDateFormat formatter = new SimpleDateFormat("M/dd/yyyy");
+//                    SimpleDateFormat formatter2 = new SimpleDateFormat("dd MMM yyyy");
+//                    try {
+//                        Date date = formatter.parse(rate.Date);
+//                        String formatted = formatter2.format(date);
+//                        formatted = formatted + " " + rate.Time;
+//                        CountryUtil.setDateAndTime(context, formatted);
+//                        isDateSet = true;
+//
+//                    } catch (ParseException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
 
         }
         close(db);

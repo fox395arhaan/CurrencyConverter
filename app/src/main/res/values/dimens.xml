@@ -4,6 +4,16 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="main_layout_height">42dp</dimen>
+    <dimen name="main_layout_height_large">84dp</dimen>
     <dimen name="image_height">36dp</dimen>
-
+    <dimen name="image_height_large">48dp</dimen>
+    <dimen name="dimen_sw720_flag">72dp</dimen>
+    <dimen name="dimen_large_flag">56dp</dimen>
+    <dimen name="dimen_textView_editText_sizrsw20">84dp</dimen>
+    <dimen name="dimen_textView_editText_large">58dp</dimen>
+    <dimen name="dimen_detail_textView_editText_sizrsw20">120dp</dimen>
+    <dimen name="dimen_sw720TextView_width">240dp</dimen>
+    <dimen name="dimen_sw600TextView_width">180dp</dimen>
+    <dimen name="dimen_largeTextView_width">140dp</dimen>
+    <dimen name="dimen_large_text">32sp</dimen>
 </resources>

@@ -4,15 +4,14 @@
     android:layout_height="320dp"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="5dp"
-    >
+    android:padding="5dp">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp">
 
-        <TextView
+        <com.currencyapp.currencyconverter.widget.CustomTextViewBold
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"

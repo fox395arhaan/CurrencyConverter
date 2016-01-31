@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:background="@drawable/bg">
+    android:orientation="vertical">
 
-     <RelativeLayout
-        android:id="@+id/addmob_chart"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
-    </RelativeLayout>
-    
-    <ImageView
-        android:id="@+id/imageView_chart"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scaleType="fitXY" 
-        android:layout_marginTop="2dp"/>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        style="@style/MyCustomTabLayoutlarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        app:tabGravity="fill"
+        app:tabMode="fixed" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tabs" />
 
 </LinearLayout><!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/src/main/res/layout-sw720dp/activity_chart.xml -->

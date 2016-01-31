@@ -13,13 +13,14 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.currencyapp.currencyconverter.AddToFavActivity;
 import com.currencyapp.currencyconverter.Country;
 import com.currencyapp.currencyconverter.R;
 import com.currencyapp.currencyconverter.util.CountryUtil;
 import com.currencyapp.currencyconverter.util.DatabaseHandler;
+import com.currencyapp.currencyconverter.widget.CustomTextView;
+import com.currencyapp.currencyconverter.widget.CustomTextViewBold;
 
 import java.util.ArrayList;
 
@@ -43,8 +44,9 @@ public class FlagDialog extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        countries = new ArrayList<>();
         databaseHandler = new DatabaseHandler(getActivity());
-        countries = databaseHandler.getAllContries(true);
+
     }
 
     @Override
@@ -91,10 +93,23 @@ public class FlagDialog extends DialogFragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        countries = databaseHandler.getAllContries(true);
+        mAdapter.setCountries(countries);
+    }
+
     private class AddToFavAdapter extends RecyclerView.Adapter<AddToFavViewHolder> {
 
         ArrayList<Country> countries;
         AddToFavActivity.CountryClick countryClick;
+
+        public void setCountries(ArrayList<Country> countries) {
+            this.countries = new ArrayList<>();
+            this.countries = countries;
+            notifyDataSetChanged();
+        }
 
         public void setCountryClick(AddToFavActivity.CountryClick countryClick) {
             this.countryClick = countryClick;
@@ -139,16 +154,16 @@ public class FlagDialog extends DialogFragment {
     }
 
     private class AddToFavViewHolder extends RecyclerView.ViewHolder {
-
-        TextView tvShortName, tvFullName;
+        CustomTextViewBold tvShortName;
+        CustomTextView tvFullName;
         CheckBox checkBox;
         ImageView flag;
         CardView mainHolder;
 
         public AddToFavViewHolder(View itemView) {
             super(itemView);
-            tvShortName = (TextView) itemView.findViewById(R.id.tvShortName);
-            tvFullName = (TextView) itemView.findViewById(R.id.tvFullName);
+            tvShortName = (CustomTextViewBold) itemView.findViewById(R.id.tvShortName);
+            tvFullName = (CustomTextView) itemView.findViewById(R.id.tvFullName);
             checkBox = (CheckBox) itemView.findViewById(R.id.chkSelected);
             checkBox.setVisibility(View.GONE);
             flag = (ImageView) itemView.findViewById(R.id.flag);

@@ -2,7 +2,9 @@ package com.currencyapp.currencyconverter;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,10 +19,15 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.currencyapp.currencyconverter.util.CountryUtil;
 import com.currencyapp.currencyconverter.util.DatabaseHandler;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.HashSet;
 import java.util.List;
@@ -38,7 +45,10 @@ public class AddToFavActivity extends AppCompatActivity {
     EditText editText;
     Set<Country> selectedCountry;
     private Toolbar toolbar;
-
+    private boolean isOffline = false;
+    private LinearLayout mainLayout;
+    InterstitialAd mInterstitialAd;
+    int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +57,22 @@ public class AddToFavActivity extends AppCompatActivity {
         init();
     }
 
-    private void init() {
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getUserSettings();
+        showAd();
+
+    }
+
+
+    private void init() {
+        ads();
         initToolBar();
         selectedCountry = new HashSet<>();
         editText = (EditText) findViewById(R.id.edtSearch);
+        mainLayout = (LinearLayout) findViewById(R.id.mainLayout);
         databaseHandler = new DatabaseHandler(this);
         countries = databaseHandler.getAllContries();
         mAdapter = new AddToFavAdapter(countries);
@@ -197,6 +218,13 @@ public class AddToFavActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final AddToFavViewHolder holder, final int position) {
 
+
+            if (position != 0 && position % 50 == 0) {
+
+                showAd();
+                //Toast.makeText(AddToFavActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+            }
+
             final Country country = countries.get(position);
 
 
@@ -286,6 +314,56 @@ public class AddToFavActivity extends AppCompatActivity {
     public interface CountryClick {
 
         void changeCountry(int position, Country country, CheckBox checkBox);
+    }
+
+    private void getUserSettings() {
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        isOffline = sharedPrefs.getBoolean("pref_offline", false);
+
+        String theme = sharedPrefs.getString("prefTheme", "0");
+        int a = Integer.valueOf(theme);
+        if (isOffline) {
+            if (a == 0) {
+                a = 3;
+            }
+        }
+
+        CountryUtil.setAddToFavTheme(a, this, toolbar, mainLayout, btnShow);
+
+
+    }
+
+    private void ads() {
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(CountryUtil.adInterstitial);
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+
+            }
+        });
+
+        requestNewInterstitial();
+
+    }
+
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
+
+
+    }
+
+    private void showAd() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        }
     }
 
 }

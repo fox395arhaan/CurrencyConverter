@@ -191,7 +191,8 @@
         <item>  Venezuelan Bolivar Fuerte</item>
         <item>  Vietnamese Dong</item>
         <item>  Yemeni Rial</item>
-
+        <item>  Zambian Kwacha</item>
+        <item>  Zimbabwean Dollar</item>
 
     </string-array>
     <string-array name="shortName">
@@ -374,6 +375,9 @@
         <item>VEF</item>
         <item>VND</item>
         <item>YER</item>
+        <item>ZMK</item>
+        <item>ZWD</item>
+
     </string-array>
     <string-array name="spinnerone_name">
         <item>USD</item>
@@ -1239,7 +1243,8 @@
     <eat-comment/>
     <color name="default_bg">#3A579B</color>
     <color name="default_card">#1782A5</color>
-    <color name="default_toolbar">#086F9C</color>
+    <color name="default_statusbar">#0C98DB</color>
+    <color name="default_toolbar">#096e9e</color>
     <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="dim_foreground_disabled_material_dark">#80bebebe</color>
@@ -1256,7 +1261,8 @@
     <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="golden">#fca603</color>
-    <color name="green_bg">#6D8F8F</color>
+    <color name="green_bg">#6d8f8f</color>
+    <color name="green_statusbar">#7aa4a4</color>
     <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
@@ -1303,9 +1309,11 @@
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
     <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/src/main/res/values/color.xml -->
     <eat-comment/>
+    <color name="textColor">#666666</color>
     <color name="transparent">#00000000</color>
     <color name="white">#ffffff</color>
-    <color name="yellow_bg">#D7DB9A</color>
+    <color name="yellow_bg">#d7db9a</color>
+    <color name="yellow_statusbar">#c3c874</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode"><enum name="normal" value="0"/><enum name="listMode" value="1"/><enum name="tabMode" value="2"/></attr><attr name="displayOptions"><flag name="none" value="0"/><flag name="useLogo" value="0x1"/><flag name="showHome" value="0x2"/><flag name="homeAsUp" value="0x4"/><flag name="showTitle" value="0x8"/><flag name="showCustom" value="0x10"/><flag name="disableHome" value="0x20"/></attr><attr name="title"/><attr format="string" name="subtitle"/><attr format="reference" name="titleTextStyle"/><attr format="reference" name="subtitleTextStyle"/><attr format="reference" name="icon"/><attr format="reference" name="logo"/><attr format="reference" name="divider"/><attr format="reference" name="background"/><attr format="reference|color" name="backgroundStacked"/><attr format="reference|color" name="backgroundSplit"/><attr format="reference" name="customNavigationLayout"/><attr name="height"/><attr format="reference" name="homeLayout"/><attr format="reference" name="progressBarStyle"/><attr format="reference" name="indeterminateProgressStyle"/><attr format="dimension" name="progressBarPadding"/><attr name="homeAsUpIndicator"/><attr format="dimension" name="itemPadding"/><attr format="boolean" name="hideOnContentScroll"/><attr format="dimension" name="contentInsetStart"/><attr format="dimension" name="contentInsetEnd"/><attr format="dimension" name="contentInsetLeft"/><attr format="dimension" name="contentInsetRight"/><attr format="dimension" name="elevation"/><attr format="reference" name="popupTheme"/></declare-styleable>
     <declare-styleable name="ActionBarLayout"><attr name="android:layout_gravity"/></declare-styleable>
     <declare-styleable name="ActionMenuItemView"><attr name="android:minWidth"/></declare-styleable>
@@ -1429,6 +1437,19 @@
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
     <item name="dialog_fixed_width_major" type="dimen">320dp</item>
     <item name="dialog_fixed_width_minor" type="dimen">320dp</item>
+    <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="dimen_detail_textView_editText_sizrsw20">120dp</dimen>
+    <dimen name="dimen_largeTextView_width">140dp</dimen>
+    <dimen name="dimen_large_flag">56dp</dimen>
+    <dimen name="dimen_large_text">32sp</dimen>
+    <dimen name="dimen_sw600TextView_width">180dp</dimen>
+    <dimen name="dimen_sw720TextView_width">240dp</dimen>
+    <dimen name="dimen_sw720_flag">72dp</dimen>
+    <dimen name="dimen_textView_editText_large">58dp</dimen>
+    <dimen name="dimen_textView_editText_sizrsw20">84dp</dimen>
+    <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <eat-comment/>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
     <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
@@ -1442,12 +1463,14 @@
     <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="image_height">36dp</dimen>
+    <dimen name="image_height_large">48dp</dimen>
     <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
     <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="main_layout_height">42dp</dimen>
+    <dimen name="main_layout_height_large">84dp</dimen>
     <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="navigation_elevation">12dp</dimen>
@@ -1533,7 +1556,9 @@
     <string name="accept">Accept</string>
     <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="action_rate">Rate</string>
     <string name="action_settings">Settings</string>
+    <string name="action_share">Share</string>
     <string name="amount">Enter Amount</string>
     <string name="app_name">Currency Converter</string>
     <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
@@ -1550,6 +1575,7 @@
     <eat-comment/>
     <string name="basecurrency">Set Base Currency</string>
     <string name="canadian">CAD- Canadian Dollar</string>
+    <string name="checkout">Check Out</string>
     <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/res/values/common_strings.xml -->
     <eat-comment/>
     <string name="common_google_play_services_unknown_issue"><ns1:g id="app_name">%1$s</ns1:g> is having trouble with Google Play services. If the problem persists, please contact the developer for assistance.</string>
@@ -1578,8 +1604,9 @@
     <string name="oneyear">1y</string>
     <string name="pound">GBP- British Pound</string>
     <string name="pref_Ad_Settings">Remove Ads(coming soon)</string>
-    <string name="pref_Theme">UI Setting</string>
+    <string name="pref_Theme">Appearance Setting</string>
     <string name="pref_Theme_title">Theme</string>
+    <string name="pref_contact_developer">Developer Setting</string>
     <string name="pref_offline_mode">Offline Mode</string>
     <string name="pref_offline_mode_summary">Convert Currency in offline</string>
     <string name="pref_online_setting">Online Settings</string>
@@ -2565,12 +2592,22 @@
     <eat-comment/>
     <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabTextAppearance">@style/MyCustomTabText</item>
-        <item name="tabSelectedTextColor">#A4A4A4</item>
+        <item name="tabSelectedTextColor">#666666</item>
+    </style>
+    <style name="MyCustomTabLayoutlarge" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/MyCustomTabTextlarge</item>
+        <item name="tabSelectedTextColor">#666666</item>
     </style>
     <style name="MyCustomTabText" parent="TextAppearance.AppCompat.Button">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="textAllCaps">false</item>
         <item name="android:layout_marginLeft">3dp</item>
         <item name="android:textColor">#cccccc</item>
+    </style>
+    <style name="MyCustomTabTextlarge" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textSize">28sp</item>
+        <item name="android:layout_marginLeft">3dp</item>
+        <item name="android:textColor">#666666</item>
     </style>
     <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>

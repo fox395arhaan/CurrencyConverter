@@ -6,12 +6,12 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
-import android.widget.RelativeLayout;
 
 import com.currencyapp.currencyconverter.util.CountryUtil;
 import com.currencyapp.currencyconverter.util.YahooAPi;
-import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 
 
 public class ChartActivity extends AppCompatActivity {
@@ -27,6 +27,8 @@ public class ChartActivity extends AppCompatActivity {
     int mPosition = 2;
     private Country fromCountry;
     private Country toCountry;
+    InterstitialAd mInterstitialAd;
+    int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,42 +40,87 @@ public class ChartActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        changeRateFlag();
+        showAd();
+
     }
 
     private void viewPager() {
 
-        getDataFromIntent();
-        mViewPager = (ViewPager) findViewById(R.id.viewpager);
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        mImageAdapter = new ImageAdapter(getSupportFragmentManager());
+        try {
 
-        for (int i = 0; i < YahooAPi.maps.length; i++) {
+            ads();
+            getDataFromIntent();
+            mViewPager = (ViewPager) findViewById(R.id.viewpager);
+            tabLayout = (TabLayout) findViewById(R.id.tabs);
+            mImageAdapter = new ImageAdapter(getSupportFragmentManager());
 
-            String s = YahooAPi.maps[i];
-            mImageAdapter.addFragment(ImageFragment.newInstance(i, s), s);
+            for (int i = 0; i < YahooAPi.maps.length; i++) {
+
+                String s = YahooAPi.maps[i];
+                mImageAdapter.addFragment(ImageFragment.newInstance(i, s), s);
+            }
+
+            mViewPager.setAdapter(mImageAdapter);
+            mViewPager.setCurrentItem(mPosition);
+            mViewPager.setOffscreenPageLimit(2);
+            tabLayout.setupWithViewPager(mViewPager);
+            mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    changeRateFlag();
+                    if (counter == 1) {
+                        showAd();
+
+                    } else {
+                        if (counter == 8) {
+                            counter = 0;
+                        } else {
+
+                        }
+                    }
+                    counter++;
+                    //Toast.makeText(ChartActivity.this, String.valueOf(counter), Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
+
+
+            changeRateFlag();
+
+        } catch (Exception e) {
+
         }
+    }
 
-        mViewPager.setAdapter(mImageAdapter);
-        mViewPager.setCurrentItem(mPosition);
-        mViewPager.setOffscreenPageLimit(2);
-        tabLayout.setupWithViewPager(mViewPager);
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        showAd();
+    }
+
+    private void ads() {
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(CountryUtil.adInterstitial);
+
+        mInterstitialAd.setAdListener(new AdListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                changeRateFlag();
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
+            public void onAdClosed() {
+                requestNewInterstitial();
 
             }
         });
+
+        requestNewInterstitial();
 
     }
 
@@ -84,16 +131,7 @@ public class ChartActivity extends AppCompatActivity {
     }
 
 
-    private void addmob() {
-        com.google.android.gms.ads.AdView adView = new com.google.android.gms.ads.AdView(ChartActivity.this);
-        adView.setAdUnitId("ca-app-pub-6733180445570119/3279220380");
-        adView.setAdSize(AdSize.BANNER);
-        RelativeLayout layout = (RelativeLayout) findViewById(R.id.addmob_chart);
-        layout.addView(adView);
-        layout.setGravity(Gravity.CENTER);
-        com.google.android.gms.ads.AdRequest request = new com.google.android.gms.ads.AdRequest.Builder().build();
-        adView.loadAd(request);
-    }
+
 
     private void changeRateFlag() {
 
@@ -110,6 +148,22 @@ public class ChartActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
+
+
+    }
+
+    private void showAd() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        }
     }
 
 

@@ -66,9 +66,27 @@
             android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".AddToFavActivity"
-            android:windowSoftInputMode="stateHidden|adjustNothing" />
+            android:parentActivityName=".Temp.TempActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustNothing">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Temp.TempActivity" />
+
+
+        </activity>
         <activity android:name=".FavDetailsActivity" />
         <activity android:name=".GraphDetailActivity"></activity>
+        <activity android:name=".MailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation">
+            <intent-filter>
+                <action android:name="com.sample.android.turboweather.EMAIL_TARA" />
+                <category android:name="android.intent.category.DEFAULT"/>
+
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

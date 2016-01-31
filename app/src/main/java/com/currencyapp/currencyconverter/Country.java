@@ -37,20 +37,20 @@ public class Country {
     @Override
     public boolean equals(Object obj) {
 
-        boolean result=false;
+        boolean result = false;
 
-        if(obj==null){
+        if (obj == null) {
             return result;
         }
 
-        if(obj instanceof Country){
+        if (obj instanceof Country) {
 
-            Country country=(Country)obj;
-            if(country.fullName.equalsIgnoreCase(this.fullName) && country.shortName.equalsIgnoreCase(this.shortName)){
-                result=true;
+            Country country = (Country) obj;
+            if (country.fullName.equalsIgnoreCase(this.fullName) && country.shortName.equalsIgnoreCase(this.shortName)) {
+                result = true;
             }
 
-        }else{
+        } else {
             return result;
         }
 
@@ -64,7 +64,7 @@ public class Country {
     public int hashCode() {
         int hash = 3;
         hash = 7 * hash + this.shortName.hashCode();
-        hash=7*hash+this.fullName.hashCode();
+        hash = 7 * hash + this.fullName.hashCode();
         return hash;
     }
 
@@ -256,6 +256,7 @@ public class Country {
                 R.drawable.flag_vnd,
                 R.drawable.flag_yer,
                 R.drawable.flag_zmk,
+                R.drawable.flag_zwd,
         };
 
         for (int i = 0; i < ShortNamelist.length; i++) {

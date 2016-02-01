@@ -36,7 +36,7 @@
                         android:layout_weight="1"
                         android:text="CurrencyRP"
                         android:textColor="@android:color/white"
-                        android:textSize="22sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <com.currencyapp.currencyconverter.widget.CustomTextView
@@ -48,7 +48,7 @@
                         android:gravity="center_vertical"
                         android:text="Last Updated"
                         android:textColor="@android:color/white"
-                        android:textSize="14sp" />
+                        android:textSize="10sp" />
 
                 </LinearLayout>
 

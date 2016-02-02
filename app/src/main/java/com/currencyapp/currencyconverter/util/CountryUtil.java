@@ -32,6 +32,33 @@ public class CountryUtil {
 
 
     public static final String adInterstitial = "ca-app-pub-6733180445570119/8404505582";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static final String isDefaultSet = "isDefaultSet";
     public static final String fromCountry = "fromCountry";
     public static final String ToCountry = "ToCountry";

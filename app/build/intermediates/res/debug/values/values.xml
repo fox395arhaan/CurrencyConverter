@@ -192,7 +192,7 @@
         <item>  Vietnamese Dong</item>
         <item>  Yemeni Rial</item>
         <item>  Zambian Kwacha</item>
-        <item>  Zimbabwean Dollar</item>
+
 
     </string-array>
     <string-array name="shortName">
@@ -376,7 +376,6 @@
         <item>VND</item>
         <item>YER</item>
         <item>ZMK</item>
-        <item>ZWD</item>
 
     </string-array>
     <string-array name="spinnerone_name">
@@ -1442,12 +1441,12 @@
     <dimen name="dimen_detail_textView_editText_sizrsw20">120dp</dimen>
     <dimen name="dimen_largeTextView_width">140dp</dimen>
     <dimen name="dimen_large_flag">56dp</dimen>
-    <dimen name="dimen_large_text">32sp</dimen>
-    <dimen name="dimen_sw600TextView_width">180dp</dimen>
+    <dimen name="dimen_large_text">28sp</dimen>
+    <dimen name="dimen_sw600TextView_width">186dp</dimen>
     <dimen name="dimen_sw720TextView_width">240dp</dimen>
     <dimen name="dimen_sw720_flag">72dp</dimen>
     <dimen name="dimen_textView_editText_large">58dp</dimen>
-    <dimen name="dimen_textView_editText_sizrsw20">84dp</dimen>
+    <dimen name="dimen_textView_editText_sizrsw20">92dp</dimen>
     <!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
@@ -1603,7 +1602,7 @@
     <string name="oneday">1d</string>
     <string name="oneyear">1y</string>
     <string name="pound">GBP- British Pound</string>
-    <string name="pref_Ad_Settings">Remove Ads(coming soon)</string>
+    <string name="pref_Ad_Settings">Remove Ads</string>
     <string name="pref_Theme">Appearance Setting</string>
     <string name="pref_Theme_title">Theme</string>
     <string name="pref_contact_developer">Developer Setting</string>
@@ -2605,7 +2604,8 @@
         <item name="android:textColor">#cccccc</item>
     </style>
     <style name="MyCustomTabTextlarge" parent="TextAppearance.AppCompat.Button">
-        <item name="android:textSize">28sp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="textAllCaps">false</item>
         <item name="android:layout_marginLeft">3dp</item>
         <item name="android:textColor">#666666</item>
     </style>

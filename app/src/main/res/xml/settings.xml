@@ -30,15 +30,17 @@
 
     <PreferenceCategory android:title="@string/pref_contact_developer">
 
-        <Preference android:title="Contact Developer"
+        <Preference
             android:key="mail"
-            >
+            android:title="Contact Developer">
 
         </Preference>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_Ad_Settings">
-
+        <Preference
+            android:key="removead"
+            android:title="Pro Version Only" />
     </PreferenceCategory>
 
 </PreferenceScreen>

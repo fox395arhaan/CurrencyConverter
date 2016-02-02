@@ -2,9 +2,10 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/tools"
     android:id="@+id/mainHolder"
+    android:tag="normal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/offline_bg"
+    android:background="@color/yellow_bg"
     android:orientation="vertical">
 
 
@@ -43,8 +44,9 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="AUS"
+                    android:textStyle="bold"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
                 <ImageView
                     android:id="@+id/imgFrom"
@@ -63,6 +65,7 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/rect_edit_text_white"
             android:gravity="center"
+            android:textSize="18sp"
             android:inputType="number|numberDecimal"
             android:maxLength="15"
             android:textColor="#2D5475"
@@ -89,13 +92,14 @@
                 <com.currencyapp.currencyconverter.widget.CustomTextView
                     android:id="@+id/txtTo"
                     android:layout_width="0dp"
+                    android:textStyle="bold"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="AUS"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
                 <ImageView
                     android:id="@+id/imgTo"
@@ -117,6 +121,7 @@
             android:gravity="center"
             android:inputType="number|numberDecimal"
             android:maxLength="15"
+            android:textSize="18sp"
             android:textColor="#2D5475"
             android:textStyle="bold" />
 
@@ -173,15 +178,7 @@
             android:layout_below="@+id/tapToLargeHolder"
             android:layout_weight="1" />
 
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/adView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/viewpager"
 
-
-            ads:adSize="SMART_BANNER"
-            ads:adUnitId="ca-app-pub-6733180445570119/3279220380" />
 
         <LinearLayout
             android:id="@+id/chartHolder"

@@ -9,9 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.currencyapp.currencyconverter.util.CountryUtil;
 import com.currencyapp.currencyconverter.util.YahooAPi;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 
 
 public class ChartActivity extends AppCompatActivity {
@@ -27,7 +24,7 @@ public class ChartActivity extends AppCompatActivity {
     int mPosition = 2;
     private Country fromCountry;
     private Country toCountry;
-    InterstitialAd mInterstitialAd;
+
     int counter = 0;
 
     @Override
@@ -40,7 +37,7 @@ public class ChartActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        showAd();
+
 
     }
 
@@ -48,7 +45,7 @@ public class ChartActivity extends AppCompatActivity {
 
         try {
 
-            ads();
+
             getDataFromIntent();
             mViewPager = (ViewPager) findViewById(R.id.viewpager);
             tabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -73,18 +70,7 @@ public class ChartActivity extends AppCompatActivity {
                 @Override
                 public void onPageSelected(int position) {
                     changeRateFlag();
-                    if (counter == 1) {
-                        showAd();
 
-                    } else {
-                        if (counter == 8) {
-                            counter = 0;
-                        } else {
-
-                        }
-                    }
-                    counter++;
-                    //Toast.makeText(ChartActivity.this, String.valueOf(counter), Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -104,33 +90,15 @@ public class ChartActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        showAd();
-    }
-
-    private void ads() {
-
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(CountryUtil.adInterstitial);
-
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                requestNewInterstitial();
-
-            }
-        });
-
-        requestNewInterstitial();
 
     }
+
 
     private void getDataFromIntent() {
 
         Intent intent = getIntent();
         mPosition = intent.getIntExtra(Intent.EXTRA_UID, 2);
     }
-
-
 
 
     private void changeRateFlag() {
@@ -149,22 +117,5 @@ public class ChartActivity extends AppCompatActivity {
         }
 
     }
-
-    private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
-                .build();
-
-        mInterstitialAd.loadAd(adRequest);
-
-
-    }
-
-    private void showAd() {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        }
-    }
-
 
 }

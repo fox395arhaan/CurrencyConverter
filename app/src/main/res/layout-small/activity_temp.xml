@@ -10,7 +10,6 @@
 
         <android.support.v7.widget.Toolbar
 
-
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -36,13 +35,14 @@
                         android:layout_weight="1"
                         android:text="CurrencyRP"
                         android:textColor="@android:color/white"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <com.currencyapp.currencyconverter.widget.CustomTextView
                         android:id="@+id/lastUpdated"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:maxLines="1"
                         android:layout_gravity="center_vertical"
                         android:layout_marginBottom="10dp"
                         android:gravity="center_vertical"
@@ -64,15 +64,28 @@
             android:id="@+id/tabs"
             style="@style/MyCustomTabLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?attr/actionBarSize"
             android:background="#ffffff"
             app:tabGravity="fill"
             app:tabMode="fixed" />
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-</android.support.design.widget.CoordinatorLayout>
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:adSize="SMART_BANNER"
+            app:adUnitId="ca-app-pub-6733180445570119/3279220380" />
+    </LinearLayout></android.support.design.widget.CoordinatorLayout>

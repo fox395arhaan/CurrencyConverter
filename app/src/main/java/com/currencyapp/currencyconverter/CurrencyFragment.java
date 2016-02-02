@@ -42,8 +42,6 @@ import com.currencyapp.currencyconverter.util.MyApplication;
 import com.currencyapp.currencyconverter.util.YahooAPi;
 import com.currencyapp.currencyconverter.widget.CustomEditTextView;
 import com.currencyapp.currencyconverter.widget.CustomTextView;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -75,7 +73,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
     private String url = "http://chart.finance.yahoo.com/z?s=";
     private String sub_url = "&q=l&m=on&z=m";
     private Intent intent;
-    private AdRequest adRequest;
+
     ProgressBar mProgressBar;
     DatabaseHandler databaseHandler;
     private String usd = "USDUSD";
@@ -157,11 +155,6 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
 
     private void init(View rootView) {
 
-        AdView adView = (AdView) rootView.findViewById(R.id.adView);
-        // Request for Ads
-        adRequest = new com.google.android.gms.ads.AdRequest.Builder()
-                .build();
-        adView.loadAd(adRequest);
 
         txtFrom = (CustomTextView) rootView.findViewById(R.id.txtFrom);
 
@@ -182,7 +175,13 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
         fromHolderCard = (CardView) rootView.findViewById(R.id.fromHolderCard);
         toHolderCard = (CardView) rootView.findViewById(R.id.toHolderCard);
 
-        edtFrom.setText("1");
+
+        //check layout is being used by android
+
+        Log.d("check layout", mainHolder.getTag().toString());
+
+
+        edtFrom.setText(CountryUtil.getFromValue(getActivity()));
         edtTo.setText("0");
         int position = edtFrom.getText().length();
         edtFrom.setSelection(position);
@@ -438,20 +437,22 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                                 double fromValue = Double.valueOf(edtFrom.getText().toString());
                                 double toValue = Double.valueOf(rate.Rate);
                                 double totalValue = fromValue * toValue;
-                                edtTo.setText(String.valueOf(totalValue));
+                                edtTo.setText(String.format("%.4f", totalValue));
+
                             } else {
 
                                 double toValue = Double.valueOf(edtTo.getText().toString());
                                 double fromValue = Double.valueOf(rate.Rate);
                                 double totalValue = fromValue * toValue;
-                                edtFrom.setText(String.valueOf(totalValue));
+                                edtFrom.setText(String.format("%.4f", totalValue));
                             }
 
                         } else {
 
                             edtTo.setText("0");
                         }
-                        //mProgressDialog.dismiss();
+                        CountryUtil.setDateAndTime(getActivity());
+                        tempActivity.setLastUpdatedText();
                     } catch (Exception e) {
                         //mProgressDialog.dismiss();
                     }

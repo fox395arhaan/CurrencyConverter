@@ -256,7 +256,7 @@ public class Country {
                 R.drawable.flag_vnd,
                 R.drawable.flag_yer,
                 R.drawable.flag_zmk,
-                R.drawable.flag_zwd,
+
         };
 
         for (int i = 0; i < ShortNamelist.length; i++) {

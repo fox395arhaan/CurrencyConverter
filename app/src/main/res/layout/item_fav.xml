@@ -10,7 +10,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="68dp"
         android:orientation="horizontal"
         android:padding="5dp">
 
@@ -28,8 +28,9 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/flag"
             android:text="name"
+
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="17sp" />
 
         <com.currencyapp.currencyconverter.widget.CustomTextView
             android:id="@+id/tvFullName"
@@ -40,7 +41,7 @@
             android:layout_toRightOf="@+id/flag"
             android:text="name"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="17sp" />
 
         <CheckBox
             android:id="@+id/chkSelected"

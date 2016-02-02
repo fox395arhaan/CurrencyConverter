@@ -23,12 +23,13 @@
 
         <com.currencyapp.currencyconverter.widget.CustomTextViewBold
             android:id="@+id/tvValue"
+            android:text="0.0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/flag"
             android:textColor="#0b0b38"
-            android:textSize="32sp" />
+            android:textSize="30sp" />
 
         <com.currencyapp.currencyconverter.widget.CustomTextView
             android:id="@+id/tvShortName"
@@ -39,7 +40,7 @@
             android:layout_toRightOf="@+id/flag"
             android:text="name"
             android:textColor="@android:color/darker_gray"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <com.currencyapp.currencyconverter.widget.CustomTextView
@@ -51,7 +52,7 @@
             android:layout_toRightOf="@+id/flag"
             android:text="name"
             android:textColor="@android:color/darker_gray"
-            android:textSize="26sp" />
+            android:textSize="24sp" />
 
 
     </RelativeLayout>

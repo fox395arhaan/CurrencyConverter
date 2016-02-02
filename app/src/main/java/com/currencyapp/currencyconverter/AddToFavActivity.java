@@ -25,9 +25,6 @@ import android.widget.Toast;
 
 import com.currencyapp.currencyconverter.util.CountryUtil;
 import com.currencyapp.currencyconverter.util.DatabaseHandler;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.HashSet;
 import java.util.List;
@@ -47,7 +44,7 @@ public class AddToFavActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private boolean isOffline = false;
     private LinearLayout mainLayout;
-    InterstitialAd mInterstitialAd;
+
     int counter = 0;
 
     @Override
@@ -62,13 +59,13 @@ public class AddToFavActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         getUserSettings();
-        showAd();
+
 
     }
 
 
     private void init() {
-        ads();
+
         initToolBar();
         selectedCountry = new HashSet<>();
         editText = (EditText) findViewById(R.id.edtSearch);
@@ -218,16 +215,7 @@ public class AddToFavActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final AddToFavViewHolder holder, final int position) {
 
-
-            if (position != 0 && position % 50 == 0) {
-
-                showAd();
-                //Toast.makeText(AddToFavActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
-            }
-
             final Country country = countries.get(position);
-
-
             if (selectedCountry.contains(country)) {
                 holder.checkBox.setChecked(true);
             } else {
@@ -333,37 +321,5 @@ public class AddToFavActivity extends AppCompatActivity {
 
     }
 
-    private void ads() {
-
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(CountryUtil.adInterstitial);
-
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                requestNewInterstitial();
-
-            }
-        });
-
-        requestNewInterstitial();
-
-    }
-
-    private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
-                .build();
-
-        mInterstitialAd.loadAd(adRequest);
-
-
-    }
-
-    private void showAd() {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        }
-    }
 
 }

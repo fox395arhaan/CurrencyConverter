@@ -10,7 +10,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="76dp"
         android:orientation="horizontal"
         android:padding="5dp">
 
@@ -28,7 +28,7 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/flag"
             android:textColor="#0b0b38"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
         <com.currencyapp.currencyconverter.widget.CustomTextView
             android:id="@+id/tvShortName"
@@ -39,7 +39,7 @@
             android:layout_toRightOf="@+id/flag"
             android:text="name"
             android:textColor="@android:color/darker_gray"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
         <com.currencyapp.currencyconverter.widget.CustomTextView
@@ -51,7 +51,7 @@
             android:layout_toRightOf="@+id/flag"
             android:text="name"
             android:textColor="@android:color/darker_gray"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
 
     </RelativeLayout>

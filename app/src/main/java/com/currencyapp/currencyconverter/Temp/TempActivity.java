@@ -26,6 +26,8 @@ import com.currencyapp.currencyconverter.FavDeailsFragment;
 import com.currencyapp.currencyconverter.R;
 import com.currencyapp.currencyconverter.util.CountryUtil;
 import com.currencyapp.currencyconverter.widget.CustomTextView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +57,7 @@ public class TempActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temp);
+        loadAD();
         init();
         initToolBar();
     }
@@ -211,6 +214,16 @@ public class TempActivity extends AppCompatActivity {
 
     }
 
+
+    private void loadAD() {
+        AdRequest adRequest;
+        AdView adView = (AdView) findViewById(R.id.adView);
+        // Request for Ads
+        adRequest = new com.google.android.gms.ads.AdRequest.Builder()
+                .build();
+        adView.loadAd(adRequest);
+
+    }
 
     private void shareIt() {
         String appPackageName = getPackageName();

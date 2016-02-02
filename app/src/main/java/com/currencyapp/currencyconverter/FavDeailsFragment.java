@@ -26,9 +26,6 @@ import com.currencyapp.currencyconverter.util.CountryUtil;
 import com.currencyapp.currencyconverter.util.DatabaseHandler;
 import com.currencyapp.currencyconverter.util.Interfaces;
 import com.currencyapp.currencyconverter.util.MyApplication;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.ArrayList;
 
@@ -57,7 +54,7 @@ public class FavDeailsFragment extends Fragment {
     private Rate fromRate;
     private Interfaces.YahoofinanceReal yahoofinanceReal;
     // private ProgressDialog progressDialog;
-    InterstitialAd mInterstitialAd;
+
     int counter = 0;
     private TempActivity tempActivity;
 
@@ -82,7 +79,7 @@ public class FavDeailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_fav_deails, container, false);
-        ads();
+
         init(rootView);
         return rootView;
     }
@@ -267,11 +264,6 @@ public class FavDeailsFragment extends Fragment {
         @Override
         public void onBindViewHolder(final AddToFavViewHolder holder, final int position) {
 
-            if (position != 0 && position % 10 == 0) {
-
-                showAd();
-                //Toast.makeText(AddToFavActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
-            }
             final Country country = countries.get(position);
             Rate rate = rates.get(position);
             holder.flag.setImageResource(CountryUtil.getResourceId(getActivity(), "flag_" + country.shortName.toLowerCase()));
@@ -338,39 +330,6 @@ public class FavDeailsFragment extends Fragment {
 
             flag = (ImageView) itemView.findViewById(R.id.flag);
             mainHolder = (CardView) itemView.findViewById(R.id.mainHolder);
-        }
-    }
-
-    private void ads() {
-
-        mInterstitialAd = new InterstitialAd(getActivity());
-        mInterstitialAd.setAdUnitId(CountryUtil.adInterstitial);
-
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                requestNewInterstitial();
-
-            }
-        });
-
-        requestNewInterstitial();
-
-    }
-
-    private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
-                .build();
-
-        mInterstitialAd.loadAd(adRequest);
-
-
-    }
-
-    private void showAd() {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
         }
     }
 

@@ -40,6 +40,7 @@ public class CountryUtil {
     public static final String DateTime = "DateTime";
     public static final String UpdateData = "UpdateData";
     public static final String IsfirstTime = "IsfirstTime";
+    public static final String LastEnteredValue = "LastEnteredValue";
     static Gson gson = MyApplication.getInstance().getGson();
     static SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy HH:mm aa");
 
@@ -49,6 +50,14 @@ public class CountryUtil {
 
     public static boolean getDefault(Context context) {
         return Prefs.with(context).getBoolean(isDefaultSet, false);
+    }
+
+    public static void setLastEnteredValue(Context context, String value) {
+        Prefs.with(context).save(LastEnteredValue, value);
+    }
+
+    public static String getLastEnteredValue(Context context) {
+        return Prefs.with(context).getString(LastEnteredValue, "1");
     }
 
     public static void setFromValue(Context context, String value) {

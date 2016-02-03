@@ -4,6 +4,7 @@ package com.currencyapp.currencyconverter.Temp;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -14,11 +15,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.currencyapp.currencyconverter.CurrencyFragment;
@@ -26,8 +29,6 @@ import com.currencyapp.currencyconverter.FavDeailsFragment;
 import com.currencyapp.currencyconverter.R;
 import com.currencyapp.currencyconverter.util.CountryUtil;
 import com.currencyapp.currencyconverter.widget.CustomTextView;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,7 @@ public class TempActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temp);
-        loadAD();
+        //loadAD();
         init();
         initToolBar();
     }
@@ -67,8 +68,10 @@ public class TempActivity extends AppCompatActivity {
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
-        setupTabIcons();
+        setupTabLayout(tabLayout);
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#666666"));
+        //tabLayout.setupWithViewPager(viewPager);
+        //setupTabIcons();
 
     }
 
@@ -177,6 +180,18 @@ public class TempActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+
+    public void setupTabLayout(TabLayout tabLayout) {
+        tabLayout.setTabMode(TabLayout.MODE_FIXED);
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        tabLayout.setupWithViewPager(viewPager);
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            TabLayout.Tab tab = tabLayout.getTabAt(i);
+            tab.setCustomView(adapter.getTabView(i));
+        }
+        tabLayout.requestFocus();
+    }
+
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
@@ -202,9 +217,23 @@ public class TempActivity extends AppCompatActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
+
             String title = mFragmentTitleList.get(position).toLowerCase();
             String cap = title.substring(0, 1).toUpperCase() + title.substring(1);
             return cap;
+        }
+
+
+        public View getTabView(int position) {
+            View tab = LayoutInflater.from(TempActivity.this).inflate(R.layout.tabbar_view, null);
+            TextView tabText = (TextView) tab.findViewById(R.id.tabText);
+            ImageView tabImage = (ImageView) tab.findViewById(R.id.tabImage);
+            tabText.setText(mFragmentTitleList.get(position));
+            tabImage.setBackgroundResource(tabIcons[position]);
+            if (position == 0) {
+                tab.setSelected(true);
+            }
+            return tab;
         }
     }
 
@@ -215,15 +244,15 @@ public class TempActivity extends AppCompatActivity {
     }
 
 
-    private void loadAD() {
-        AdRequest adRequest;
-        AdView adView = (AdView) findViewById(R.id.adView);
-        // Request for Ads
-        adRequest = new com.google.android.gms.ads.AdRequest.Builder()
-                .build();
-        adView.loadAd(adRequest);
-
-    }
+//    private void loadAD() {
+//        AdRequest adRequest;
+//        AdView adView = (AdView) findViewById(R.id.adView);
+//        // Request for Ads
+//        adRequest = new com.google.android.gms.ads.AdRequest.Builder()
+//                .build();
+//        adView.loadAd(adRequest);
+//
+//    }
 
     private void shareIt() {
         String appPackageName = getPackageName();

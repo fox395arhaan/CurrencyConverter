@@ -21,9 +21,6 @@ import com.currencyapp.currencyconverter.util.CountryUtil;
 import com.currencyapp.currencyconverter.util.DatabaseHandler;
 import com.currencyapp.currencyconverter.widget.CustomTextView;
 import com.currencyapp.currencyconverter.widget.CustomTextViewBold;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.ArrayList;
 
@@ -39,7 +36,7 @@ public class FlagDialog extends DialogFragment {
     private ArrayList<Country> countries;
     private DatabaseHandler databaseHandler;
     private SetCountryListener setCountryListener;
-    InterstitialAd mInterstitialAd;
+    //InterstitialAd mInterstitialAd;
 
     public void setSetCountryListener(SetCountryListener setCountryListener) {
         this.setCountryListener = setCountryListener;
@@ -50,26 +47,26 @@ public class FlagDialog extends DialogFragment {
         super.onCreate(savedInstanceState);
         countries = new ArrayList<>();
         databaseHandler = new DatabaseHandler(getActivity());
-        mInterstitialAd = new InterstitialAd(getActivity());
-        mInterstitialAd.setAdUnitId(CountryUtil.adInterstitial);
+        //mInterstitialAd = new InterstitialAd(getActivity());
+       // mInterstitialAd.setAdUnitId(CountryUtil.adInterstitial);
 
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                requestNewInterstitial();
-                beginPlayingGame();
-            }
-        });
+//        mInterstitialAd.setAdListener(new AdListener() {
+//            @Override
+//            public void onAdClosed() {
+//                requestNewInterstitial();
+//                beginPlayingGame();
+//            }
+//        });
 
     }
 
-    private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
-                .build();
-
-        mInterstitialAd.loadAd(adRequest);
-    }
+//    private void requestNewInterstitial() {
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
+//                .build();
+//
+//        mInterstitialAd.loadAd(adRequest);
+//    }
 
     private void beginPlayingGame() {
         // Play for a while, then display the New Game Button
@@ -98,7 +95,7 @@ public class FlagDialog extends DialogFragment {
         allCurrencies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAd();
+               // showAd();
                 dismiss();
                 startActivity(new Intent(getActivity(), AddToFavActivity.class));
 
@@ -121,13 +118,13 @@ public class FlagDialog extends DialogFragment {
         });
     }
 
-    private void showAd() {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            beginPlayingGame();
-        }
-    }
+//    private void showAd() {
+//        if (mInterstitialAd.isLoaded()) {
+//            mInterstitialAd.show();
+//        } else {
+//            beginPlayingGame();
+//        }
+//    }
 
     @Override
     public void onResume() {
@@ -174,7 +171,7 @@ public class FlagDialog extends DialogFragment {
             holder.mainHolder.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showAd();
+                    //showAd();
                     countryClick.changeCountry(position, country, holder.checkBox);
                 }
             });

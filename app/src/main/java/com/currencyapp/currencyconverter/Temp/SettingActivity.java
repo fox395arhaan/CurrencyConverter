@@ -65,14 +65,20 @@ public class SettingActivity extends AppCompatPreferenceActivity {
 
     private void rateit() {
 
-        Uri uri = Uri.parse("market://details?id=" + getPackageName());
+
+        String proPackageName="com.currencyapp.currencyconverterpro";
+
+        Uri uri = Uri.parse("market://details?id=" + proPackageName);
         Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
         try {
             startActivity(goToMarket);
         } catch (ActivityNotFoundException e) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + proPackageName)));
         }
 
+
+
+        Log.d("URI",uri.toString());
     }
 
 }

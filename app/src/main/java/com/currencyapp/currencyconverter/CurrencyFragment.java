@@ -34,7 +34,7 @@ import android.widget.Toast;
 import com.currencyapp.currencyconverter.Model.Rate;
 import com.currencyapp.currencyconverter.Model.YahooFinanceReal;
 import com.currencyapp.currencyconverter.Temp.FlagDialog;
-import com.currencyapp.currencyconverter.Temp.TempActivity;
+import com.currencyapp.currencyconverter.Temp.MainActivity;
 import com.currencyapp.currencyconverter.util.CountryUtil;
 import com.currencyapp.currencyconverter.util.DatabaseHandler;
 import com.currencyapp.currencyconverter.util.Interfaces;
@@ -82,7 +82,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
     private String mUSD = "USD";
     private View rootView;
     //private ProgressDialog mProgressDialog;
-    TempActivity tempActivity;
+    MainActivity mainActivity;
     private ViewPager mViewPager;
     private TabLayout tabLayout;
     private ImageAdapter mImageAdapter;
@@ -103,7 +103,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
         databaseHandler = new DatabaseHandler(getActivity());
 //        mProgressDialog = ProgressDialog.show(getActivity(), "Please wait", "Updating Rates");
 //        mProgressDialog.dismiss();
-        tempActivity = (TempActivity) getActivity();
+        mainActivity = (MainActivity) getActivity();
 
 
     }
@@ -182,7 +182,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
 
 
         edtFrom.setText(CountryUtil.getFromValue(getActivity()));
-        edtTo.setText("0");
+        edtTo.setText(CountryUtil.getToValue(getActivity()));
         int position = edtFrom.getText().length();
         edtFrom.setSelection(position);
         im_chart = (ImageView) rootView.findViewById(R.id.img_chart);
@@ -357,7 +357,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
 
                 Intent chartActivity = new Intent(getActivity(), ChartActivity.class);
-                tempActivity.startActivity(chartActivity);
+                mainActivity.startActivity(chartActivity);
 
             }
         });
@@ -438,6 +438,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                                 double toValue = Double.valueOf(rate.Rate);
                                 double totalValue = fromValue * toValue;
                                 edtTo.setText(String.format("%.4f", totalValue));
+                                CountryUtil.setToValue(getActivity(),String.valueOf(totalValue));
 
                             } else {
 
@@ -452,7 +453,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                             edtTo.setText("0");
                         }
                         CountryUtil.setDateAndTime(getActivity());
-                        tempActivity.setLastUpdatedText();
+                        mainActivity.setLastUpdatedText();
                     } catch (Exception e) {
                         //mProgressDialog.dismiss();
                     }
@@ -477,7 +478,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
     public void callWebServiceAll() {
         //mProgressDialog.dismiss();
 
-        final ImageView imageView = tempActivity.refresh;
+        final ImageView imageView = mainActivity.refresh;
         final Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.rotation);
 
         imageView.startAnimation(animation);
@@ -492,7 +493,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                         databaseHandler.saveAllRate(yahooFinanceReal.query.results.rate);
                         CountryUtil.setIsfirstTime(getActivity(), true);
                         CountryUtil.setDateAndTime(getActivity());
-                        tempActivity.setLastUpdatedText();
+                        mainActivity.setLastUpdatedText();
                     }
 
                 } catch (Exception e) {
@@ -535,6 +536,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                 double v = Double.valueOf(edtFrom.getText().toString());
                 finalRate = v * (toRate / fromRate);
                 edtTo.setText(String.format("%.4f", finalRate));
+                CountryUtil.setToValue(getActivity(), String.valueOf(finalRate));
             } else {
                 finalRate = fromRate / toRate;
                 edtFrom.setText(String.format("%.4f", finalRate));
@@ -587,7 +589,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                 a = 3;
             }
         }
-        CountryUtil.setTheme(a, getActivity(), tempActivity.getToolbar(), mainHolder, fromHolderCard, toHolderCard, txtFrom, txtTo, imgViceversa, edtFrom, edtTo);
+        CountryUtil.setTheme(a, getActivity(), mainActivity.getToolbar(), mainHolder, fromHolderCard, toHolderCard, txtFrom, txtTo, imgViceversa, edtFrom, edtTo);
 
 
     }

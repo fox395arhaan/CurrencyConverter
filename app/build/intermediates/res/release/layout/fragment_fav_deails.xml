@@ -1,0 +1,19 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.currencyapp.currencyconverter.FavDeailsFragment">
+
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical" />
+
+</FrameLayout>
+<!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/src/main/res/layout/fragment_fav_deails.xml -->

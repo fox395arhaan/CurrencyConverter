@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 import com.currencyapp.currencyconverter.Model.Rate;
 import com.currencyapp.currencyconverter.Model.YahooFinanceReal;
-import com.currencyapp.currencyconverter.Temp.TempActivity;
+import com.currencyapp.currencyconverter.Temp.MainActivity;
 import com.currencyapp.currencyconverter.util.CountryUtil;
 import com.currencyapp.currencyconverter.util.DatabaseHandler;
 import com.currencyapp.currencyconverter.util.Interfaces;
@@ -56,7 +56,7 @@ public class FavDeailsFragment extends Fragment {
     // private ProgressDialog progressDialog;
 
     int counter = 0;
-    private TempActivity tempActivity;
+    private MainActivity mainActivity;
 
     public FavDeailsFragment() {
         // Required empty public constructor
@@ -70,7 +70,7 @@ public class FavDeailsFragment extends Fragment {
         databaseHandler = new DatabaseHandler(getActivity());
         //progressDialog = ProgressDialog.show(getActivity(), "Please wait", "Updating Rates");
         // progressDialog.dismiss();
-        tempActivity = (TempActivity) getActivity();
+        mainActivity = (MainActivity) getActivity();
 
     }
 
@@ -157,7 +157,7 @@ public class FavDeailsFragment extends Fragment {
 
     private void getRateOnline(String countryName, final boolean isAnimate) {
 
-        final ImageView imageView = tempActivity.refresh;
+        final ImageView imageView = mainActivity.refresh;
         final Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.rotation);
         imageView.startAnimation(animation);
 
@@ -178,7 +178,7 @@ public class FavDeailsFragment extends Fragment {
                 }
                 // progressDialog.dismiss();
                 CountryUtil.setDateAndTime(getActivity());
-                tempActivity.setLastUpdatedText();
+                mainActivity.setLastUpdatedText();
                 imageView.clearAnimation();
 
             }

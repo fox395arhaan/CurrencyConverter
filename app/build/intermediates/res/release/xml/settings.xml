@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <PreferenceCategory android:title="@string/pref_online_setting">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_offline"
+            android:summary="@string/pref_offline_mode_summary"
+            android:title="@string/pref_offline_mode"></CheckBoxPreference>
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="@string/pref_Theme">
+
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/Theme"
+            android:entryValues="@array/ThemeValues"
+            android:key="prefTheme"
+            android:summary="@string/pref_theme_summary"
+            android:title="@string/pref_Theme_title" />
+
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="@string/pref_contact_developer">
+
+        <Preference
+            android:key="mail"
+            android:title="Contact Developer">
+
+        </Preference>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_Ad_Settings">
+        <Preference
+            android:key="removead"
+            android:title="Pro Version Only" />
+    </PreferenceCategory>
+
+</PreferenceScreen><!-- From: file:/mnt/01CDF76F1CC119A0/softwares/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/src/main/res/xml/settings.xml -->

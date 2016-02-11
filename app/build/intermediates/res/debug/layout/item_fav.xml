@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainHolder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/flag"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/flag_inr" />
+
+        <com.currencyapp.currencyconverter.widget.CustomTextViewBold
+            android:id="@+id/tvShortName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/flag"
+            android:text="name"
+
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
+
+        <com.currencyapp.currencyconverter.widget.CustomTextView
+            android:id="@+id/tvFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvShortName"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/flag"
+            android:text="name"
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
+
+        <CheckBox
+            android:id="@+id/chkSelected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView><!-- From: file:/mnt/01CDF76F1CC119A0/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/src/main/res/layout/item_fav.xml -->

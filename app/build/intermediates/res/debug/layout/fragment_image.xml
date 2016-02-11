@@ -1,0 +1,23 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.currencyapp.currencyconverter.ImageFragment">
+
+
+    <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/white">
+
+        <!-- TODO: Update blank fragment layout -->
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center" />
+
+
+    </android.support.v7.widget.CardView>
+</FrameLayout>
+<!-- From: file:/mnt/01CDF76F1CC119A0/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/src/main/res/layout/fragment_image.xml -->

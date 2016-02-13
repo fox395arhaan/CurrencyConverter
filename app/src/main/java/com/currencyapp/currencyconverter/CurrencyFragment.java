@@ -282,14 +282,24 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s != null && s.length() > 0) {
 
+                String value = s.toString();
 
-                    double text = Double.valueOf(s.toString());
-                    if (text > 0) {
-                        CountryUtil.setFromValue(getActivity(), s.toString());
+                if (value != null && value.length() > 0) {
+
+                    try {
+
+                        if (value.startsWith(".")) {
+
+                            value = 0 + value;
+                            edtFrom.setText(value);
+                            edtFrom.setSelection(edtFrom.getText().length());
+                        }
+                        CountryUtil.setFromValue(getActivity(), value);
                         getRate();
 
+
+                    } catch (Exception e) {
 
                     }
                 }
@@ -438,7 +448,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                                 double toValue = Double.valueOf(rate.Rate);
                                 double totalValue = fromValue * toValue;
                                 edtTo.setText(String.format("%.4f", totalValue));
-                                CountryUtil.setToValue(getActivity(),String.valueOf(totalValue));
+                                CountryUtil.setToValue(getActivity(), String.valueOf(totalValue));
 
                             } else {
 

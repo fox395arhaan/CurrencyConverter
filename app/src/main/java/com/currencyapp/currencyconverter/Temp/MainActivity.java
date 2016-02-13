@@ -29,6 +29,8 @@ import com.currencyapp.currencyconverter.FavDeailsFragment;
 import com.currencyapp.currencyconverter.R;
 import com.currencyapp.currencyconverter.util.CountryUtil;
 import com.currencyapp.currencyconverter.widget.CustomTextView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         //loadAD();
         init();
         initToolBar();
+        Admob();
     }
 
     private void init() {
@@ -121,6 +124,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+    private void Admob() {
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+    }
+
 
     private void initToolBar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);

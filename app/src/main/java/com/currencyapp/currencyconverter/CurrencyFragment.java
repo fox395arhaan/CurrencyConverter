@@ -127,6 +127,11 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
 
 
         try {
+            fromCountry = CountryUtil.getFromCountry(getActivity());
+            toCountry = CountryUtil.getToCountry(getActivity());
+            setCountryNameandFlag(fromCountry, 0);
+            setCountryNameandFlag(toCountry, 1);
+
             getUserSettings();
             ///mProgressDialog.show();
             changeRateFlag();
@@ -208,12 +213,6 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
         twoyear.setOnClickListener(this);
         fiveyear.setOnClickListener(this);
 
-        fromCountry = CountryUtil.getFromCountry(getActivity());
-        toCountry = CountryUtil.getToCountry(getActivity());
-
-
-        setCountryNameandFlag(fromCountry, 0);
-        setCountryNameandFlag(toCountry, 1);
 
 
         yahoofinanceReal = MyApplication.getRetrofit().create(Interfaces.YahoofinanceReal.class);

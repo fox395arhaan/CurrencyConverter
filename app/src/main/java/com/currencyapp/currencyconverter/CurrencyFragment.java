@@ -214,7 +214,6 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
         fiveyear.setOnClickListener(this);
 
 
-
         yahoofinanceReal = MyApplication.getRetrofit().create(Interfaces.YahoofinanceReal.class);
 
 
@@ -366,7 +365,8 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
 
                 Intent chartActivity = new Intent(getActivity(), ChartActivity.class);
-                mainActivity.startActivity(chartActivity);
+                chartActivity.putExtra(Intent.EXTRA_UID, mViewPager.getCurrentItem());
+                getActivity().startActivity(chartActivity);
 
             }
         });
@@ -397,7 +397,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
 
             ImageFragment imageFragment = (ImageFragment) fragment;
             String time = YahooAPi.maps[mViewPager.getCurrentItem()];
-            String url = String.format("http://chart.finance.yahoo.com/z?s=%s%s=x&t=%s&q=l&m=on&z=m", fromCountry.shortName, toCountry.shortName, time);
+            String url = String.format("http://chart.finance.yahoo.com/z?s=%s%s=x&t=%s&q=l&m=on&z=l", fromCountry.shortName, toCountry.shortName, time);
             imageFragment.changeImage(url);
 
         }

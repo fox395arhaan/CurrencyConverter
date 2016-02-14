@@ -67,7 +67,7 @@ public class CountryUtil {
     }
 
     public static String getFromValue(Context context) {
-        return Prefs.with(context).getString(FromValue, "0");
+        return Prefs.with(context).getString(FromValue, "1");
     }
 
     public static void setToValue(Context context, String value) {
@@ -75,7 +75,7 @@ public class CountryUtil {
     }
 
     public static String getToValue(Context context) {
-        return Prefs.with(context).getString(Tovalue, "0");
+        return Prefs.with(context).getString(Tovalue, "1");
     }
 
 

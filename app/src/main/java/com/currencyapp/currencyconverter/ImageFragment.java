@@ -84,7 +84,7 @@ public class ImageFragment extends Fragment {
                 loadOfflineImage();
 
             } else {
-                String url = String.format("http://chart.finance.yahoo.com/z?s=%s%s=x&t=%s&q=l&m=on&z=m", fromCountry.shortName, toCountry.shortName, "3m");
+                String url = String.format("http://chart.finance.yahoo.com/z?s=%s%s=x&t=%s&q=l&m=on&z=l", fromCountry.shortName, toCountry.shortName, "3m");
                 Glide.clear(mTextView);
                 Glide.with(getActivity()).load(url).into(mTextView);
 
@@ -107,7 +107,6 @@ public class ImageFragment extends Fragment {
 
         }
     }
-
 
     public void changeImage(String s) {
 

@@ -167,7 +167,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Tap to Large"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <android.support.v4.view.ViewPager

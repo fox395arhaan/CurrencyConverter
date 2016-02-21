@@ -162,12 +162,13 @@
             android:visibility="visible">
 
             <TextView
+                android:textColor="@color/tap_large_color"
                 android:id="@+id/tapToLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Tap to Large"
-                android:textSize="16sp" />
+                android:textSize="10sp" />
         </LinearLayout>
 
         <android.support.v4.view.ViewPager

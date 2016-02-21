@@ -14,5 +14,5 @@
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:textColor="@color/textColor"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 </LinearLayout><!-- From: file:/mnt/01CDF76F1CC119A0/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/src/main/res/layout/tabbar_view.xml -->

@@ -13,7 +13,6 @@
         android:layout_height="@dimen/dimen_detail_textView_editText_sizrsw20"
         android:orientation="horizontal"
         android:padding="5dp">
-
         <ImageView
             android:id="@+id/flag"
             android:layout_width="72dp"

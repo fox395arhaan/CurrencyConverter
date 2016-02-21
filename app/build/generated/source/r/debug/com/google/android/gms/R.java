@@ -24,7 +24,6 @@ public final class R {
 	public static final class id {
 		public static final int adjust_height = 0x7f0d0032;
 		public static final int adjust_width = 0x7f0d0033;
-		public static final int auto = 0x7f0d003e;
 		public static final int none = 0x7f0d0010;
 		public static final int normal = 0x7f0d000c;
 		public static final int wrap_content = 0x7f0d003b;

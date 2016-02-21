@@ -25,5 +25,6 @@
 
     <color name="offline_bg">#EEEEEE</color>
     <color name="textColor">#666666</color>
+        <color name="tap_large_color">#17557F</color>
 
 </resources>

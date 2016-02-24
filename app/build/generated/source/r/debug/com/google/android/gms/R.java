@@ -37,14 +37,14 @@ public final class R {
 	}
 	public static final class string {
 		public static final int accept = 0x7f060015;
-		public static final int auth_google_play_services_client_facebook_display_name = 0x7f06001d;
-		public static final int auth_google_play_services_client_google_display_name = 0x7f06001e;
+		public static final int auth_google_play_services_client_facebook_display_name = 0x7f06001e;
+		public static final int auth_google_play_services_client_google_display_name = 0x7f06001f;
 		public static final int common_google_play_services_unknown_issue = 0x7f060013;
-		public static final int create_calendar_message = 0x7f060024;
-		public static final int create_calendar_title = 0x7f060025;
-		public static final int decline = 0x7f060027;
-		public static final int store_picture_message = 0x7f06003a;
-		public static final int store_picture_title = 0x7f06003b;
+		public static final int create_calendar_message = 0x7f060025;
+		public static final int create_calendar_title = 0x7f060026;
+		public static final int decline = 0x7f060028;
+		public static final int store_picture_message = 0x7f06003b;
+		public static final int store_picture_title = 0x7f06003c;
 	}
 	public static final class style {
 		public static final int Theme_IAPTheme = 0x7f0900fe;

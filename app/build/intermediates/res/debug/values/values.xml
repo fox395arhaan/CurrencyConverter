@@ -1565,6 +1565,7 @@
     <string name="action_rate">Rate</string>
     <string name="action_settings">Settings</string>
     <string name="action_share">Share</string>
+    <string name="admobBanner">ca-app-pub-6239073439757679/7846854345</string>
     <string name="amount">Enter Amount</string>
     <string name="app_name">Currency Converter</string>
     <!-- From: file:/mnt/01CDF76F1CC119A0/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->

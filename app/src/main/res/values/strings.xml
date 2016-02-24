@@ -1215,4 +1215,5 @@
     <string name="action_share">Share</string>
     <string name="action_rate">Rate</string>
     <string name="checkout">Check Out</string>
+    <string name="admobBanner">ca-app-pub-6239073439757679/7846854345</string>
 </resources>

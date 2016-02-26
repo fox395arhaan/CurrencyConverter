@@ -27,10 +27,10 @@ public class Country {
     public Country() {
     }
 
-    public Country(String shortName, String fullName, int imageId, boolean isSelected) {
+    public Country(String shortName, String fullName,  boolean isSelected) {
         this.shortName = shortName;
         this.fullName = fullName;
-        this.imageId = imageId;
+
         this.isSelected = isSelected;
     }
 
@@ -266,7 +266,7 @@ public class Country {
             if (strings.contains(ShortNamelist[i])) {
                 isSelected = true;
             }
-            Country country = new Country(ShortNamelist[i], FullNamelist[i], ints[i], isSelected);
+            Country country = new Country(ShortNamelist[i], FullNamelist[i], isSelected);
             countries.add(country);
         }
         return countries;

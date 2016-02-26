@@ -1690,178 +1690,180 @@
         <item>  British Pound</item>
         <item>  Canadian Dollar</item>
         <item>  Australian Dollar</item>
-        <item>  UAE Dirham</item>
-        <item>  Afghan Afghani</item>
-        <item>  Albanian Lek</item>
-        <item>  Armenian Dram</item>
-        <item>  Neth Antillian Guilder</item>
-        <item>  Angolan Kwanza</item>
-        <item>  Argentine Peso</item>
-        <item>  Austrian Schiling </item>
-        <item>  Aruban Florin</item>
-        <item>  Azerbaijan Manat</item>
-        <item>  Bosnian Marka</item>
-        <item>  Barbados Dollar</item>
-        <item>  Bangladeshi Taka</item>
-        <item>  Belgian Franc</item>
-        <item>  Bulgarian Lev</item>
-        <item>  Bahraini Dinar</item>
-        <item>  Burundian Franc</item>
-        <item>  Bermudian Dollar</item>
-        <item>  Brunei Dollar</item>
-        <item>  Bolivian Boliviano</item>
-        <item>  Brazilian Real</item>
-        <item>  Bahamian Dollar</item>
-        <item>  Bitcoin</item>
-        <item>  Bhutan Ngultrum</item>
-        <item>  Botswana Pula</item>
-        <item>  Belarusian Ruble</item>
-        <item>  Belize Dollar</item>
-        <item>  Congolese Franc</item>
-        <item>  Chilean Peso</item>
-        <item>  Chinese Yuan</item>
-        <item>  Comoros Franc</item>
-        <item>  Croatian Kuna</item>
-        <item>  Cuban Peso</item>
-        <item>  Cape Verde Escudo</item>
-        <item>  Cyprus Pound</item>
-        <item>  Czech Koruna</item>
-        <item>  German Mark</item>
-        <item>  Djiboutian Franc</item>
-        <item>  Danish Krone</item>
-        <item>  Dominican Peso</item>
-        <item>  Algerian Dinar</item>
-        <item>  Estonian Kroon</item>
-        <item>  Egyptian Pound</item>
-        <item>  Eritrean Nakfa</item>
-        <item>  Spanish Peseta</item>
-        <item>  Ethiopian Birr</item>
-        <item>  Finnish Mark</item>
-        <item>  Fijian Dollar</item>
-        <item>  Falkland Islands Pound</item>
-        <item>  French Franc</item>
-        <item>  Georgian Lari</item>
-        <item>  Ghanaian New Cedi</item>
-        <item>  Gibraltar Pound</item>
-        <item>  Gambian Dalasi</item>
-        <item>  Guinea Franc</item>
-        <item>  Greek Drachma</item>
-        <item>  Guatemalan Quetzal</item>
-        <item>  Guyanese Dollar</item>
-        <item>  Hong Kong Dollar</item>
-        <item>  Honduran Lempira</item>
-        <item>  Croatian Kuna</item>
-        <item>  Haitian Gourde</item>
-        <item>  Hungarian Forint</item>
-        <item>  Indonesian Rupiah</item>
-        <item>  Irish Pound</item>
-        <item>  Israeli Shekel</item>
-        <item>  Iraqi Dinar</item>
-        <item>  Iranian Rial</item>
-        <item>  Iceland Krona</item>
-        <item>  Italian Lira</item>
-        <item>  Jamaican Dollar</item>
-        <item>  Jordanian Dinar</item>
-        <item>  Japanese Yen</item>
-        <item>  Kenyan Shilling</item>
-        <item>  Kyrgyzstanian Som</item>
-        <item>  Cambodian Riel</item>
-        <item>  Comorian Franc</item>
-        <item>  North Korean Won</item>
-        <item>  South Korean Won</item>
-        <item>  Kuwaiti Dinar</item>
-        <item>  Cayman Islands Dollar</item>
-        <item>  Kazakhstan Tenge</item>
-        <item>  Lao Kip</item>
-        <item>  Lebanese Pound</item>
-        <item>  Sri Lanka Rupee</item>
-        <item>  Liberian Dollar</item>
-        <item>  Lesotho Loti</item>
-        <item>  Lithuanian Litas</item>
-        <item>  Luxembourg Franc</item>
-        <item>  Latvian Lats</item>
-        <item>  Libyan Dinar</item>
-        <item>  Moroccan Dirham</item>
-        <item>  Moldovan Leu</item>
-        <item>  Malagasy Ariary</item>
-        <item>  Macedonian Denar</item>
-        <item>  Myanmar Kyat</item>
-        <item>  Mongolian Tugrik</item>
-        <item>  Macanese Pataca</item>
-        <item>  Mauritanian Ouguiya</item>
-        <item>  Maltese Lira</item>
-        <item>  Mauritius Rupee</item>
-        <item>  Maldive Rufiyaa</item>
-        <item>  Malawi Kwacha</item>
-        <item>  Mexican Peso</item>
-        <item>  Malaysian Ringgit</item>
-        <item>  Mozambique Metical</item>
-        <item>  Namibia Dollar</item>
-        <item>  Nigerian Naira</item>
-        <item>  Nicaraguan Cordoba </item>
-        <item>  Dutch Guilder</item>
-        <item>  Norwegian Krone</item>
-        <item>  Nepalese Rupee</item>
-        <item>  New Zealand Dollar</item>
-        <item>  Omani Rial</item>
-        <item>  Panamanian Balboa</item>
-        <item>  Peruvian Nuevo Sol</item>
-        <item>  Papua New Guinean Kina</item>
-        <item>  Philippine Peso</item>
-        <item>  Pakistan Rupee</item>
-        <item>  Polish Zloty</item>
-        <item>  Portuguese Escudo</item>
-        <item>  Paraguay Guarani</item>
-        <item>  Qatari Riyal</item>
-        <item>  Romanian New Leu</item>
-        <item>  Serbian Dinar</item>
-        <item>  Russian Rouble</item>
-        <item>  Rwandan Franc</item>
-        <item>  Saudi Arabain Riyal</item>
-        <item>  Solomon Islands Dollar</item>
-        <item>  Seychellois Rupee</item>
-        <item>  Sudanese Pound</item>
-        <item>  Special Drawing Rights</item>
-        <item>  Swedish Krona</item>
-        <item>  Ghanaian New Cedi</item>
-        <item>  St Helena Pound</item>
-        <item>  Slovenian Tolar</item>
-        <item>  Slovak Koruna</item>
-        <item>  Sierra Leone Leone</item>
-        <item>  Somali Shilling</item>
-        <item>  Suriname Dollar</item>
-        <item>  Sao Tomean Dobra</item>
-        <item>  Salvadoran Colon</item>
-        <item>  Syrian Pound</item>
-        <item>  Swazi Lilangeni</item>
-        <item>  Tai Baht</item>
-        <item>  Tajikistani Somoni</item>
-        <item>  Turkmenistan New Manat</item>
-        <item>  Tunisian Dinar</item>
-        <item>  Tonga Paanga</item>
-        <item>  Turkish Lira</item>
-        <item>  Trinidad Tobago Dollar</item>
-        <item>  Taiwan Dollar</item>
-        <item>  Tanzanian Shilling</item>
-        <item>  Ukrainian Hryvnia</item>
-        <item>  Uganda Shilling</item>
-        <item>  Uruguayan Peso</item>
-        <item>  Uzbekistan Som</item>
-        <item>  Venezuelan Bolivar</item>
-        <item>  Vietnamese Dong</item>
-        <item>  Vanuatu Vatu</item>
-        <item>  Samoan Tala</item>
-        <item>  CFP Franc (BEAC)</item>
-        <item>  Silver Ounces</item>
-        <item>  Gold Ounces</item>
-        <item>  East Caribbean Dollar</item>
-        <item>  CFA Franc (BCEAO)</item>
-        <item>  Palladium Ounces</item>
-        <item>  Pacific Franc</item>
-        <item>  Platinum Ounces</item>
-        <item>  Yemeni Rial</item>
-        <item>  South African Rand</item>
 
+        <item> UAE Dirham</item>
+        <item> Afghan Afghani</item>
+        <item> Albanian Lek</item>
+        <item> Armenian Dram</item>
+        <item> Neth Antilles Guilder</item>
+        <item> Angolan Kwanza</item>
+        <item> Argentine Peso</item>
+        <item> Austrian Schiling</item>
+        <item> Aruban Florin</item>
+        <item> Azerbaijan Manat</item>
+        <item> Bosnian Marka</item>
+        <item> Barbadian Dollar</item>
+        <item> Bangladeshi Taka</item>
+        <item> Belgian Franc</item>
+        <item> Bulgarian Lev</item>
+        <item> Bahraini Dinar</item>
+        <item> Burundian Franc</item>
+        <item> Bermudian Dollar</item>
+        <item> Brunei Dollar</item>
+        <item> Bolivian Boliviano</item>
+        <item> Brazilian Real</item>
+        <item> Bahamian Dollar</item>
+        <item> Bitcoin</item>
+        <item> Bhutanese Ngultrum</item>
+        <item> Botswana Pula</item>
+        <item> Belarusian Ruble</item>
+        <item> Belize Dollar</item>
+        <item> Congolese Franc</item>
+        <item> Swiss Franc</item>
+        <item> Chilean Peso</item>
+        <item> Chinese Yuan</item>
+        <item> Colombian Peso</item>
+        <item> Costa Rican Colon</item>
+        <item> Cuban Peso</item>
+        <item> Cape Verdean Escudo</item>
+        <item> Cyprus Pound</item>
+        <item> Czech Koruna</item>
+        <item> German Mark</item>
+        <item> Djiboutian Franc</item>
+        <item> Danish Krone</item>
+        <item> Dominican Peso</item>
+        <item> Algerian Dinar</item>
+        <item> Estonian Kroon</item>
+        <item> Egyptian Pound</item>
+        <item> Eritrean Nakfa</item>
+        <item> Spanish Peseta</item>
+        <item> Ethiopian Birr</item>
+        <item> Finnish Mark</item>
+        <item> Fijian Dollar</item>
+        <item> Falkland Islands Pound</item>
+        <item> French Franc</item>
+        <item> Georgian Lari</item>
+        <item> Ghanaian New Cedi</item>
+        <item> Gibraltar Pound</item>
+        <item> Gambian Dalasi</item>
+        <item> Guinea Franc</item>
+        <item> Greek Drachma</item>
+        <item> Guatemalan Quetzal</item>
+        <item> Guyanese Dollar</item>
+        <item> Hong Kong Dollar</item>
+        <item> Honduran Lempira</item>
+        <item> Croatian Kuna</item>
+        <item> Haitian Gourde</item>
+        <item> Hungarian Forint</item>
+        <item> Indonesian Rupiah</item>
+        <item> Irish Pound</item>
+        <item> Israeli Shekel</item>
+        <item> Iraqi Dinar</item>
+        <item> Iranian Rial</item>
+        <item> Icelandic Krona</item>
+        <item> Italian Lira</item>
+        <item> Jamaican Dollar</item>
+        <item> Jordanian Dinar</item>
+        <item> Japanese Yen</item>
+        <item> Kenyan Shilling</item>
+        <item> Kyrgyzstanian Som</item>
+        <item> Cambodian Riel</item>
+        <item> Comorian Franc</item>
+        <item> North Korean Won</item>
+        <item> South Korean Won</item>
+        <item> Kuwaiti Dinar</item>
+        <item> Cayman Islands Dollar</item>
+        <item> Kazakhstan Tenge</item>
+        <item> Lao Kip</item>
+        <item> Lebanese Pound</item>
+        <item> Sri Lanka Rupee</item>
+        <item> Liberian Dollar</item>
+        <item> Lesotho Loti</item>
+        <item> Lithuanian Litas</item>
+        <item> Luxembourg Franc</item>
+        <item> Latvian Lat</item>
+        <item> Libyan Dinar</item>
+        <item> Moroccan Dirham</item>
+        <item> Moldovan Leu</item>
+        <item> Malagasy Ariary</item>
+        <item> Macedonian Denar</item>
+        <item> Myanmar Kyat</item>
+        <item> Mongolian Tugrik</item>
+        <item> Macanese Pataca</item>
+        <item> Mauritanian Ouguiya</item>
+        <item> Maltese Lira</item>
+        <item> Mauritius Rupee</item>
+        <item> Maldivian Rufiyaa</item>
+        <item> Malawian Kwacha</item>
+        <item> Mexican Peso</item>
+        <item> Malaysian Ringgit</item>
+        <item> Mozambican Metical</item>
+        <item> Namibian Dollar</item>
+        <item> Nigerian Naira</item>
+        <item> Nicaraguan Cordoba</item>
+        <item> Dutch Guilder</item>
+        <item> Norwegian Krone</item>
+        <item> Nepalese Rupee</item>
+        <item> New Zealand Dollar</item>
+        <item> Omani Rial</item>
+        <item> Panamanian Balboa</item>
+        <item> Peruvian Nuevo Sol</item>
+        <item> Papua New Guinean Kina</item>
+        <item> Philippine Peso</item>
+        <item> Pakistan Rupee</item>
+        <item> Polish Zloty</item>
+        <item> Portuguese Escudo</item>
+        <item> Paraguayan Guarani</item>
+        <item> Qatari Riyal</item>
+        <item> Romanian New Leu</item>
+        <item> Serbian Dinar</item>
+        <item> Russian Rouble</item>
+        <item> Rwandan Franc</item>
+        <item> Saudi Arabain Riyal</item>
+        <item> Solomon Islands Dollar</item>
+        <item> Seychellois Rupee</item>
+        <item> Sudanese Pound</item>
+        <item> Special Drawing Rights</item>
+        <item> Swedish Krona</item>
+        <item> Singapore Dollar</item>
+        <item> St Helena Pound</item>
+        <item> Slovenian Tolar</item>
+        <item> Slovak Koruna</item>
+        <item> Sierra Leonean Leone</item>
+        <item> Somali Shilling</item>
+        <item> Surinamese Dollar</item>
+        <item> Sao Tomean Dobra</item>
+        <item> Salvadoran Colon</item>
+        <item> Syrian Pound</item>
+        <item> Swazi Lilangeni</item>
+        <item> Tai Baht</item>
+        <item> Tajikistani Somoni</item>
+        <item> Turkmenistan New Manat</item>
+        <item> Tunisian Dinar</item>
+        <item> Tonga Paanga</item>
+        <item> Turkish Lira</item>
+        <item> Trinidad Tobago Dollar</item>
+        <item> Taiwan Dollar</item>
+        <item> Tanzanian Shilling</item>
+        <item> Ukrainian Hryvnia</item>
+        <item> Uganda Shilling</item>
+        <item> Uruguayan Peso</item>
+        <item> Uzbekistan Som</item>
+        <item> Venezuelan Bolivar</item>
+        <item> Vietnamese Dong</item>
+        <item> Vanuatu Vatu</item>
+        <item> Samoan Tala</item>
+        <item> CFA Franc (BEAC)</item>
+        <item> Silver Ounces</item>
+        <item> Gold Ounces</item>
+        <item> East Caribbean Dollar</item>
+        <item> CFA Franc (BCEAO)</item>
+        <item> Palladium Ounces</item>
+        <item> Pacific Franc</item>
+        <item> Platinum Ounces</item>
+        <item> Yemeni Rial</item>
+        <item> South African Rand</item>
+        <item> Zambian Kwacha</item>
 
     </string-array><string name="oneday">1d</string><string name="pref_online_setting">Online Settings</string><string name="admobBanner">ca-app-pub-6239073439757679/7846854345</string><string name="oneyear">1y</string><string-array name="shortName">
 
@@ -1872,177 +1874,179 @@
         <item>CAD</item>
         <item>AUD</item>
 
-        <item>AED</item>
-        <item>AFN</item>
-        <item>ALL</item>
-        <item>AMD</item>
-        <item>ANG</item>
-        <item>AOA</item>
-        <item>ARS</item>
-        <item>ATS</item>
-        <item>AWG</item>
-        <item>AZN</item>
-        <item>BAM</item>
-        <item>BBD</item>
-        <item>BDT</item>
-        <item>BEF</item>
-        <item>BGN</item>
-        <item>BHD</item>
-        <item>BIF</item>
-        <item>BMD</item>
-        <item>BND</item>
-        <item>BOB</item>
-        <item>BRL</item>
-        <item>BSD</item>
-        <item>BTC</item>
-        <item>BTN</item>
-        <item>BWP</item>
-        <item>BYR</item>
-        <item>BZD</item>
-        <item>CDF</item>
-        <item>CLP</item>
-        <item>CNY</item>
-        <item>COP</item>
-        <item>CRC</item>
-        <item>CUP</item>
-        <item>CVE</item>
-        <item>CYP</item>
-        <item>CZK</item>
-        <item>DEM</item>
-        <item>DJF</item>
-        <item>DKK</item>
-        <item>DOP</item>
-        <item>DZD</item>
-        <item>EEK</item>
-        <item>EGP</item>
-        <item>ERN</item>
-        <item>ESP</item>
-        <item>ETB</item>
-        <item>FIM</item>
-        <item>FJD</item>
-        <item>FKP</item>
-        <item>FRF</item>
-        <item>GEL</item>
-        <item>GHS</item>
-        <item>GIP</item>
-        <item>GMD</item>
-        <item>GNF</item>
-        <item>GRD</item>
-        <item>GTQ</item>
-        <item>GYD</item>
-        <item>HKD</item>
-        <item>HNL</item>
-        <item>HRK</item>
-        <item>HTG</item>
-        <item>HUF</item>
-        <item>IDR</item>
-        <item>IEP</item>
-        <item>ILS</item>
-        <item>IQD</item>
-        <item>IRR</item>
-        <item>ISK</item>
-        <item>ITL</item>
-        <item>JMD</item>
-        <item>JOD</item>
-        <item>JPY</item>
-        <item>KES</item>
-        <item>KGS</item>
-        <item>KHR</item>
-        <item>KMF</item>
-        <item>KPW</item>
-        <item>KRW</item>
-        <item>KWD</item>
-        <item>KYD</item>
-        <item>KZT</item>
-        <item>LAK</item>
-        <item>LBP</item>
-        <item>LKR</item>
-        <item>LRD</item>
-        <item>LSL</item>
-        <item>LTL</item>
-        <item>LUF</item>
-        <item>LVL</item>
-        <item>LYD</item>
-        <item>MAD</item>
-        <item>MDL</item>
-        <item>MGA</item>
-        <item>MKD</item>
-        <item>MMK</item>
-        <item>MNT</item>
-        <item>MOP</item>
-        <item>MRO</item>
-        <item>MTL</item>
-        <item>MUR</item>
-        <item>MVR</item>
-        <item>MWK</item>
-        <item>MXN</item>
-        <item>MYR</item>
-        <item>MZN</item>
-        <item>NAD</item>
-        <item>NGN</item>
-        <item>NIO</item>
-        <item>NLG</item>
-        <item>NOK</item>
-        <item>NPR</item>
-        <item>NZD</item>
-        <item>OMR</item>
-        <item>PAB</item>
-        <item>PEN</item>
-        <item>PGK</item>
-        <item>PHP</item>
-        <item>PKR</item>
-        <item>PLN</item>
-        <item>PTE</item>
-        <item>PYG</item>
-        <item>QAR</item>
-        <item>RON</item>
-        <item>RSD</item>
-        <item>RUB</item>
-        <item>RWF</item>
-        <item>SAR</item>
-        <item>SBD</item>
-        <item>SCR</item>
-        <item>SDG</item>
-        <item>SDR</item>
-        <item>SEK</item>
-        <item>SGD</item>
-        <item>SHP</item>
-        <item>SIT</item>
-        <item>SKK</item>
-        <item>SLL</item>
-        <item>SOS</item>
-        <item>SRD</item>
-        <item>STD</item>
-        <item>SVC</item>
-        <item>SYP</item>
-        <item>SZL</item>
-        <item>THB</item>
-        <item>TJS</item>
-        <item>TMT</item>
-        <item>TND</item>
-        <item>TOP</item>
-        <item>TRY</item>
-        <item>TTD</item>
-        <item>TWD</item>
-        <item>TZS</item>
-        <item>UAH</item>
-        <item>UGX</item>
-        <item>UYU</item>
-        <item>UZS</item>
-        <item>VEF</item>
-        <item>VND</item>
-        <item>VUV</item>
-        <item>WST</item>
-        <item>XAF</item>
-        <item>XAG</item>
-        <item>XAU</item>
-        <item>XCD</item>
-        <item>XOF</item>
-        <item>XPD</item>
-        <item>XPF</item>
-        <item>XPT</item>
-        <item>YER</item>
-        <item>ZAR</item>
+        <item> AED</item>
+        <item> AFN</item>
+        <item> ALL</item>
+        <item> AMD</item>
+        <item> ANG</item>
+        <item> AOA</item>
+        <item> ARS</item>
+        <item> ATS</item>
+        <item> AWG</item>
+        <item> AZN</item>
+        <item> BAM</item>
+        <item> BBD</item>
+        <item> BDT</item>
+        <item> BEF</item>
+        <item> BGN</item>
+        <item> BHD</item>
+        <item> BIF</item>
+        <item> BMD</item>
+        <item> BND</item>
+        <item> BOB</item>
+        <item> BRL</item>
+        <item> BSD</item>
+        <item> BTC</item>
+        <item> BTN</item>
+        <item> BWP</item>
+        <item> BYR</item>
+        <item> BZD</item>
+        <item> CDF</item>
+        <item> CHF</item>
+        <item> CLP</item>
+        <item> CNY</item>
+        <item> COP</item>
+        <item> CRC</item>
+        <item> CUP</item>
+        <item> CVE</item>
+        <item> CYP</item>
+        <item> CZK</item>
+        <item> DEM</item>
+        <item> DJF</item>
+        <item> DKK</item>
+        <item> DOP</item>
+        <item> DZD</item>
+        <item> EEK</item>
+        <item> EGP</item>
+        <item> ERN</item>
+        <item> ESP</item>
+        <item> ETB</item>
+        <item> FIM</item>
+        <item> FJD</item>
+        <item> FKP</item>
+        <item> FRF</item>
+        <item> GEL</item>
+        <item> GHS</item>
+        <item> GIP</item>
+        <item> GMD</item>
+        <item> GNF</item>
+        <item> GRD</item>
+        <item> GTQ</item>
+        <item> GYD</item>
+        <item> HKD</item>
+        <item> HNL</item>
+        <item> HRK</item>
+        <item> HTG</item>
+        <item> HUF</item>
+        <item> IDR</item>
+        <item> IEP</item>
+        <item> ILS</item>
+        <item> IQD</item>
+        <item> IRR</item>
+        <item> ISK</item>
+        <item> ITL</item>
+        <item> JMD</item>
+        <item> JOD</item>
+        <item> JPY</item>
+        <item> KES</item>
+        <item> KGS</item>
+        <item> KHR</item>
+        <item> KMF</item>
+        <item> KPW</item>
+        <item> KRW</item>
+        <item> KWD</item>
+        <item> KYD</item>
+        <item> KZT</item>
+        <item> LAK</item>
+        <item> LBP</item>
+        <item> LKR</item>
+        <item> LRD</item>
+        <item> LSL</item>
+        <item> LTL</item>
+        <item> LUF</item>
+        <item> LVL</item>
+        <item> LYD</item>
+        <item> MAD</item>
+        <item> MDL</item>
+        <item> MGA</item>
+        <item> MKD</item>
+        <item> MMK</item>
+        <item> MNT</item>
+        <item> MOP</item>
+        <item> MRO</item>
+        <item> MTL</item>
+        <item> MUR</item>
+        <item> MVR</item>
+        <item> MWK</item>
+        <item> MXN</item>
+        <item> MYR</item>
+        <item> MZN</item>
+        <item> NAD</item>
+        <item> NGN</item>
+        <item> NIO</item>
+        <item> NLG</item>
+        <item> NOK</item>
+        <item> NPR</item>
+        <item> NZD</item>
+        <item> OMR</item>
+        <item> PAB</item>
+        <item> PEN</item>
+        <item> PGK</item>
+        <item> PHP</item>
+        <item> PKR</item>
+        <item> PLN</item>
+        <item> PTE</item>
+        <item> PYG</item>
+        <item> QAR</item>
+        <item> RON</item>
+        <item> RSD</item>
+        <item> RUB</item>
+        <item> RWF</item>
+        <item> SAR</item>
+        <item> SBD</item>
+        <item> SCR</item>
+        <item> SDG</item>
+        <item> SDR</item>
+        <item> SEK</item>
+        <item> SGD</item>
+        <item> SHP</item>
+        <item> SIT</item>
+        <item> SKK</item>
+        <item> SLL</item>
+        <item> SOS</item>
+        <item> SRD</item>
+        <item> STD</item>
+        <item> SVC</item>
+        <item> SYP</item>
+        <item> SZL</item>
+        <item> THB</item>
+        <item> TJS</item>
+        <item> TMT</item>
+        <item> TND</item>
+        <item> TOP</item>
+        <item> TRY</item>
+        <item> TTD</item>
+        <item> TWD</item>
+        <item> TZS</item>
+        <item> UAH</item>
+        <item> UGX</item>
+        <item> UYU</item>
+        <item> UZS</item>
+        <item> VEF</item>
+        <item> VND</item>
+        <item> VUV</item>
+        <item> WST</item>
+        <item> XAF</item>
+        <item> XAG</item>
+        <item> XAU</item>
+        <item> XCD</item>
+        <item> XOF</item>
+        <item> XPD</item>
+        <item> XPF</item>
+        <item> XPT</item>
+        <item> YER</item>
+        <item> ZAR</item>
+        <item> ZMW</item>
 
     </string-array><string name="australian">AUD- Australian Dollar</string><string name="indian">INR- Indian Rupee</string><string name="twoyear">2y</string><string name="fiveyear">5y</string><string-array name="spinnerone_name">
         <item>USD</item>

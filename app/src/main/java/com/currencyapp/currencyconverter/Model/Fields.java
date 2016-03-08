@@ -6,4 +6,5 @@ package com.currencyapp.currencyconverter.Model;
 public class Fields {
 
     public String name;
+    public String price;
 }

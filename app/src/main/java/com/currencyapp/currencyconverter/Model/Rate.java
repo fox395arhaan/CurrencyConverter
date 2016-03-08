@@ -13,6 +13,26 @@ public class Rate {
     public String Ask;
     public String Bid;
 
+    public Rate() {
+        id = "USDUSD";
+        Name = "USDUSD";
+        Rate = "0";
+        Date = "date";
+        Time = "time";
+        Ask = "ask";
+        Bid = "bid";
+    }
+
+
+    //    {
+//        "id": "EURUSD",
+//            "Name": "EUR/USD",
+//            "Rate": "1.0999",
+//            "Date": "3/5/2016",
+//            "Time": "8:59am",
+//            "Ask": "1.1030",
+//            "Bid": "1.0969"
+//    }
 
     public void setId(String id) {
         this.id = id;

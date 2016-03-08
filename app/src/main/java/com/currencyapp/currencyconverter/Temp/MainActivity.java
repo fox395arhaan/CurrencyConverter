@@ -35,6 +35,8 @@ import com.google.android.gms.ads.AdView;
 import java.util.ArrayList;
 import java.util.List;
 
+import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -64,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
         init();
         initToolBar();
         Admob();
+        SQLiteStudioService.instance().start(this);
+        SQLiteStudioService.instance().setPort(9999);
+        SQLiteStudioService.instance().addIpToWhiteList("192.168.0.101");
+        SQLiteStudioService.instance().setPassword("123");
+
+
     }
 
     private void init() {
@@ -287,6 +295,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
         }
 
+    }
+
+    @Override
+    public void onDestroy() {
+        SQLiteStudioService.instance().stop();
+        super.onDestroy();
     }
 
 }

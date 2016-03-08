@@ -2581,7 +2581,7 @@ containing a value of this type.
         public static final int flag_xpt=0x7f0200fa;
         public static final int flag_yer=0x7f0200fb;
         public static final int flag_zar=0x7f0200fc;
-        public static final int flag_zmk=0x7f0200fd;
+        public static final int flag_zmw=0x7f0200fd;
         public static final int flag_zwd=0x7f0200fe;
         public static final int ic_christmas_star=0x7f0200ff;
         public static final int ic_clear_black_36dp=0x7f020100;

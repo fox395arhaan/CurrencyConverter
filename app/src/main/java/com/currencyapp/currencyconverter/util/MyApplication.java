@@ -22,28 +22,34 @@ public class MyApplication extends Application {
     SQLiteDatabase sqLiteDatabase;
     Gson gson;
 
-    public static Retrofit getRetrofit() {
-        return retrofit;
-    }
+
 
     private static Retrofit retrofit;
+    private static Retrofit retrofitAll;
     private OkHttpClient okHttpClient;
 
     @Override
     public void onCreate() {
         super.onCreate();
+
         gson = new Gson();
         DatabaseHandler databaseHandler = new DatabaseHandler(getApplicationContext());
         sqLiteDatabase = databaseHandler.getWritableDatabase();
         myApplication = this;
 
         okHttpClient = new OkHttpClient();
-        okHttpClient.setConnectTimeout(60, TimeUnit.SECONDS);
-        okHttpClient.setReadTimeout(60, TimeUnit.SECONDS);
+        okHttpClient.setConnectTimeout(120, TimeUnit.SECONDS);
+        okHttpClient.setReadTimeout(120, TimeUnit.SECONDS);
 
         retrofit = new Retrofit.Builder()
                 .client(okHttpClient)
                 .baseUrl(YahooAPi.BaseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        retrofitAll = new Retrofit.Builder()
+                .client(okHttpClient)
+                .baseUrl(YahooAPi.BaseUrlAll)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -68,5 +74,23 @@ public class MyApplication extends Application {
 
     public static Context getContext() {
         return myApplication;
+    }
+
+    public static Retrofit getRetrofit() {
+        return retrofit;
+    }
+    public static Retrofit getRetrofitAll() {
+        return retrofitAll;
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        if (retrofit!=null){
+            retrofit=null;
+        }
+        if (retrofitAll!=null){
+            retrofitAll=null;
+        }
     }
 }

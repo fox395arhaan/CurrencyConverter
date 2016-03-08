@@ -5,5 +5,5 @@ package com.currencyapp.currencyconverter.Model;
  */
 public class All {
 
-    Resource resource;
+    public Resource resource;
 }

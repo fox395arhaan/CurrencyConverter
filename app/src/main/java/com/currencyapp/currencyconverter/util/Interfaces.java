@@ -15,7 +15,7 @@ public class Interfaces {
 
     public interface YahoofinanceReal {
 
-        @GET("v1/public/yql?format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=")
+            @GET("v1/public/yql?format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=")
             //Call<YahooFinanceReal> getCurrency(@Query("q") String q,@Query("diagnostics") boolean diagnostics,@Query("env") String env);
         Call<YahooFinanceReal> getCurrency(@Query("q") String q);
     }

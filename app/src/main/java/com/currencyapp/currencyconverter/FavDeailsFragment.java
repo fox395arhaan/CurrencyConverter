@@ -265,13 +265,7 @@ public class FavDeailsFragment extends Fragment {
         public void onBindViewHolder(final AddToFavViewHolder holder, final int position) {
 
             final Country country = countries.get(position);
-            Rate rate = new Rate();
-            if (isOffline) {
-                rate = databaseHandler.getRate("USD" + country.shortName.toUpperCase());
-            } else {
-
-                rate = rates.get(position);
-            }
+            Rate rate = rates.get(position);
             holder.flag.setImageResource(CountryUtil.getResourceId(getActivity(), "flag_" + country.shortName.toLowerCase()));
             holder.tvShortName.setText(String.format("%s-%s", country.shortName, country.fullName));
             double v = Double.valueOf(CountryUtil.getFromValue(getActivity()));

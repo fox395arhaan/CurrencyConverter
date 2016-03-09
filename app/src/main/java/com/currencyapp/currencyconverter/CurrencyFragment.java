@@ -29,10 +29,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.currencyapp.currencyconverter.Model.All;
-import com.currencyapp.currencyconverter.Model.Allcurrencies;
 import com.currencyapp.currencyconverter.Model.Rate;
 import com.currencyapp.currencyconverter.Model.YahooFinanceReal;
 import com.currencyapp.currencyconverter.Temp.FlagDialog;
@@ -47,7 +44,6 @@ import com.currencyapp.currencyconverter.widget.CustomTextView;
 
 import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
 
 import retrofit.Call;
 import retrofit.Callback;
@@ -126,10 +122,19 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
+        checkData();
 
+    }
 
+    private void checkData() {
         try {
             fromCountry = CountryUtil.getFromCountry(getActivity());
             toCountry = CountryUtil.getToCountry(getActivity());
@@ -156,12 +161,10 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
             }
         } catch (Exception e) {
             // mProgressDialog.dismiss();
-            Toast.makeText(getActivity(), "unable to get data.", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getActivity(), "unable to get data.", Toast.LENGTH_SHORT).show();
 
         }
-
     }
-
     private void init(View rootView) {
 
 
@@ -498,69 +501,43 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
         imageView.startAnimation(animation);
 
 
-        Call<Allcurrencies> allcurrenciesCall = allCurrencies.getAllcurrenciesCall();
-        allcurrenciesCall.enqueue(new Callback<Allcurrencies>() {
-            @Override
-            public void onResponse(Response<Allcurrencies> response, Retrofit retrofit) {
-
-                try {
-
-                    Allcurrencies allcurrencies = response.body();
-                    ArrayList<Rate> rates = new ArrayList<>();
-
-                    if (allcurrencies != null && allcurrencies.list.resources.size() > 0) {
-
-
-                        Rate rateUSd = new Rate();
-                        rateUSd.Rate = "1";
-                        rates.add(rateUSd);
-
-
-                        for (All all : allcurrencies.list.resources) {
-
-                            if (all.resource.fields.name.contains("USD/")) {
-
-                                String name = all.resource.fields.name.replace("USD/", "USD");
-                                Rate rate = new Rate();
-                                rate.id = name;
-                                rate.Name = name;
-                                rate.Ask = all.resource.fields.name.replace("USD/", "");
-                                rate.Rate = all.resource.fields.price;
-                                rates.add(rate);
-                            }
-
-                        }
-
-                        if (rates.size() > 0) {
-
-                            databaseHandler.saveAllRate(rates);
-                        }
-                        CountryUtil.setIsfirstTime(getActivity(), true);
-                        CountryUtil.setDateAndTime(getActivity());
-                        mainActivity.setLastUpdatedText();
-                    }
-
-                } catch (Exception e) {
-
-                }
-                imageView.clearAnimation();
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-                imageView.clearAnimation();
-            }
-        });
-
-//        final String query = getQuery(false);
-//        Call<YahooFinanceReal> yahooFinanceRealCall = yahoofinanceReal.getCurrency(query);
-//        yahooFinanceRealCall.enqueue(new Callback<YahooFinanceReal>() {
+//        Call<Allcurrencies> allcurrenciesCall = allCurrencies.getAllcurrenciesCall();
+//        allcurrenciesCall.enqueue(new Callback<Allcurrencies>() {
 //            @Override
-//            public void onResponse(Response<YahooFinanceReal> response, Retrofit retrofit) {
+//            public void onResponse(Response<Allcurrencies> response, Retrofit retrofit) {
+//
 //                try {
-//                    YahooFinanceReal yahooFinanceReal = response.body();
-//                    if (yahooFinanceReal != null && yahooFinanceReal.query.results.rate.size() > 0) {
-//                        databaseHandler.saveAllRate(yahooFinanceReal.query.results.rate);
+//
+//                    Allcurrencies allcurrencies = response.body();
+//                    ArrayList<Rate> rates = new ArrayList<>();
+//
+//                    if (allcurrencies != null && allcurrencies.list.resources.size() > 0) {
+//
+//
+//                        Rate rateUSd = new Rate();
+//                        rateUSd.Rate = "1";
+//                        rates.add(rateUSd);
+//
+//
+//                        for (All all : allcurrencies.list.resources) {
+//
+//                            if (all.resource.fields.name.contains("USD/")) {
+//
+//                                String name = all.resource.fields.name.replace("USD/", "USD");
+//                                Rate rate = new Rate();
+//                                rate.id = name;
+//                                rate.Name = name;
+//                                rate.Ask = all.resource.fields.name.replace("USD/", "");
+//                                rate.Rate = all.resource.fields.price;
+//                                rates.add(rate);
+//                            }
+//
+//                        }
+//
+//                        if (rates.size() > 0) {
+//
+//                            databaseHandler.saveAllRate(rates);
+//                        }
 //                        CountryUtil.setIsfirstTime(getActivity(), true);
 //                        CountryUtil.setDateAndTime(getActivity());
 //                        mainActivity.setLastUpdatedText();
@@ -569,18 +546,44 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
 //                } catch (Exception e) {
 //
 //                }
-//
 //                imageView.clearAnimation();
-//
 //            }
 //
 //            @Override
 //            public void onFailure(Throwable t) {
-//
 //                imageView.clearAnimation();
-//
 //            }
 //        });
+
+        final String query = getQuery(false);
+        Call<YahooFinanceReal> yahooFinanceRealCall = yahoofinanceReal.getCurrency(query);
+        yahooFinanceRealCall.enqueue(new Callback<YahooFinanceReal>() {
+            @Override
+            public void onResponse(Response<YahooFinanceReal> response, Retrofit retrofit) {
+                try {
+                    YahooFinanceReal yahooFinanceReal = response.body();
+                    if (yahooFinanceReal != null && yahooFinanceReal.query.results.rate.size() > 0) {
+                        databaseHandler.saveAllRate(yahooFinanceReal.query.results.rate);
+                        CountryUtil.setIsfirstTime(getActivity(), true);
+                        CountryUtil.setDateAndTime(getActivity());
+                        mainActivity.setLastUpdatedText();
+                    }
+
+                } catch (Exception e) {
+
+                }
+
+                imageView.clearAnimation();
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+                imageView.clearAnimation();
+
+            }
+        });
     }
 
 
@@ -635,7 +638,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                 query = "select * from yahoo.finance.xchange where pair in (" + finalString + " )";
             } else {
                 finalString = fromCountry.shortName.toUpperCase() + toCountry.shortName.toUpperCase();
-                reqString = "\"" + finalString + "," + usd + "\"";
+                reqString = "\"" + finalString +"\""+ "," +"\""+ usd + "\"";
                 query = "select * from yahoo.finance.xchange where pair in (" + reqString + ")";
             }
         } else {

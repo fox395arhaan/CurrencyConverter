@@ -15,6 +15,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,8 +33,22 @@ import com.currencyapp.currencyconverter.widget.CustomTextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+
 import java.util.ArrayList;
 import java.util.List;
+
+import org.joda.time.DateTime;
+import org.joda.time.Minutes;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.w3c.dom.Node;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
 
@@ -112,6 +127,81 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         getUserSettings();
+               try {
+
+                SharedPreferences settings = getSharedPreferences("PREFS_NAME", 0);
+                boolean mboolean = settings.getBoolean("FIRST_RUN", false);
+                if (!mboolean) {
+                    // do the thing for the first time
+                    settings = getSharedPreferences("PREFS_NAME", 0);
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putBoolean("FIRST_RUN", true);
+                    editor.commit();
+
+                    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                    Date dt = new Date();
+
+                    SharedPreferences.Editor editor2 = getSharedPreferences("user-pref", MODE_PRIVATE).edit();
+                    editor2.putString("date", dateFormat.format(dt));
+                    editor2.commit();
+
+                    Log.e("## Cur Date", "" + dateFormat.format(dt));
+
+                } else {
+
+                    try {
+                        SharedPreferences prefs = getSharedPreferences("user-pref", MODE_PRIVATE);
+
+                        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+                        String oldDate = prefs.getString("date", null);
+                        Date newdt =  dateFormat.parse(dateFormat.format(new Date()));
+                        Date olddt = dateFormat.parse(oldDate);
+
+                        Log.e("## OLD Date",""+olddt);
+                        Log.e("## New Date",""+newdt);
+
+                        DateTime jodaOldDate = new DateTime(olddt);
+                        DateTime jodaNewDate = new DateTime(newdt);
+
+                        Log.e("## time diff",""+ Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60);
+
+                        if(Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60 >=10){
+                            if (val.length() != 0) {
+
+
+                                checkGPS2();
+
+                                /*mEtAreaOfCity.setText(val);
+                                String _location = mEtAreaOfCity.getText().toString();
+                                searchByPlaceName(_location);
+                                showProgressDialog();
+*/
+                                DateFormat dateFormat2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                                Date dt = new Date();
+
+                                SharedPreferences.Editor editor2 = getSharedPreferences("user-pref", MODE_PRIVATE).edit();
+                                editor2.putString("date", dateFormat2.format(dt));
+                                editor2.commit();
+
+                                Log.e("## Cur Date chng", "" + dateFormat.format(dt));
+
+                            }
+
+
+
+                        }
+
+
+                    }catch (Exception e){
+                        Log.e("## EXc",e.toString());
+                    }
+
+                }
+            } catch (Exception e) {
+                Log.e("#### EXc", e.toString());
+            }
+
     }
 
     @Override

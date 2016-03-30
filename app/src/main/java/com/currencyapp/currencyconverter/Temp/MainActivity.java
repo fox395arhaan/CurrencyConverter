@@ -167,16 +167,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("## time diff",""+ Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60);
 
                         if(Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60 >=10){
-                            if (val.length() != 0) {
 
-
-                                checkGPS2();
-
-                                /*mEtAreaOfCity.setText(val);
-                                String _location = mEtAreaOfCity.getText().toString();
-                                searchByPlaceName(_location);
-                                showProgressDialog();
-*/
                                 DateFormat dateFormat2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                                 Date dt = new Date();
 
@@ -185,8 +176,6 @@ public class MainActivity extends AppCompatActivity {
                                 editor2.commit();
 
                                 Log.e("## Cur Date chng", "" + dateFormat.format(dt));
-
-                            }
 
 
 

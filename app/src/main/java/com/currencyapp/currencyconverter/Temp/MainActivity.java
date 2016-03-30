@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         getUserSettings();
+
                try {
 
                 SharedPreferences settings = getSharedPreferences("PREFS_NAME", 0);
@@ -164,6 +165,8 @@ public class MainActivity extends AppCompatActivity {
                         DateTime jodaOldDate = new DateTime(olddt);
                         DateTime jodaNewDate = new DateTime(newdt);
 
+
+
                         Log.e("## time diff",""+ Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60);
 
                         if(Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60 >=10){
@@ -176,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
                                 editor2.commit();
 
                                 Log.e("## Cur Date chng", "" + dateFormat.format(dt));
-
 
 
                         }

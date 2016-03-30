@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.joda.time.DateTime;
+import org.joda.time.Hours;
 import org.joda.time.Minutes;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -148,6 +149,9 @@ public class MainActivity extends AppCompatActivity {
 
                     Log.e("## Cur Date", "" + dateFormat.format(dt));
 
+                    callAllDataService();
+
+
                 } else {
 
                     try {
@@ -167,7 +171,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                        Log.e("## time diff",""+ Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60);
+                        Log.e("## hour time diff",""+ Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60);
+
+                        //Log.e("## min time diff",""+ Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60);
 
                         if(Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60 >=10){
 
@@ -176,9 +182,12 @@ public class MainActivity extends AppCompatActivity {
 
                                 SharedPreferences.Editor editor2 = getSharedPreferences("user-pref", MODE_PRIVATE).edit();
                                 editor2.putString("date", dateFormat2.format(dt));
-                                editor2.commit();
+                            editor2.commit();
 
-                                Log.e("## Cur Date chng", "" + dateFormat.format(dt));
+                            Log.e("## Cur Date chng", "" + dateFormat.format(dt));
+
+
+                            callAllDataService();
 
 
                         }
@@ -193,6 +202,26 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("#### EXc", e.toString());
             }
 
+    }
+
+
+    private void callAllDataService(){
+  /* */
+        Fragment fragment = adapter.getItem(viewPager.getCurrentItem());
+        if (fragment instanceof CurrencyFragment) {
+
+            CurrencyFragment currencyFragment = (CurrencyFragment) fragment;
+            currencyFragment.callWebServiceAll();
+
+        } else if (fragment instanceof FavDeailsFragment) {
+
+            FavDeailsFragment favDeailsFragment = (FavDeailsFragment) fragment;
+            favDeailsFragment.getFavCountryList(true);
+
+        }
+
+
+                            /* */
     }
 
     @Override

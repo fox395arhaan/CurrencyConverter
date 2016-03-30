@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/mnt/01CDF76F1CC119A0/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-mn-rMN/values-mn-rMN.xml -->
+    <!-- From: file:/E:/AndroidProjects/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-mn-rMN/values-mn-rMN.xml -->
     <eat-comment/>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Нүүр хуудас руу шилжих"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
@@ -21,10 +21,10 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Хуваалцах"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"%s-тай хуваалцах"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Хумих"</string>
-    <!-- From: file:/mnt/01CDF76F1CC119A0/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/res/values-mn-rMN/common_strings.xml -->
+    <!-- From: file:/E:/AndroidProjects/CurrencyConverter/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/res/values-mn-rMN/common_strings.xml -->
     <eat-comment/>
     <string msgid="7170719956698345984" name="common_google_play_services_unknown_issue">"<ns1:g id="APP_NAME">%1$s</ns1:g> нь Google Play-н үйлчилгээг ашиглахад алдаа гарлаа. Хэрэв алдаа гарсаар байвал хөгжүүлэгчтэй холбогдож, зөвлөгөө аваарай."</string>
-    <!-- From: file:/mnt/01CDF76F1CC119A0/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-mn-rMN/values-mn-rMN.xml -->
+    <!-- From: file:/E:/AndroidProjects/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-mn-rMN/values-mn-rMN.xml -->
     <eat-comment/>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

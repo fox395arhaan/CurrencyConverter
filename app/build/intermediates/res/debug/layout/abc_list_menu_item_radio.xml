@@ -22,4 +22,4 @@
              android:focusable="false"
              android:clickable="false"
              android:duplicateParentState="true"/>
-<!-- From: file:/usr/local/google/buildbot/src/googleplex-android/mnc-supportlib-release/frameworks/support/v7/appcompat/res/layout/abc_list_menu_item_radio.xml --><!-- From: file:/mnt/01CDF76F1CC119A0/Development/Project/Android/Studio/Current%20Project/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_list_menu_item_radio.xml -->
+<!-- From: file:/usr/local/google/buildbot/src/googleplex-android/mnc-supportlib-release/frameworks/support/v7/appcompat/res/layout/abc_list_menu_item_radio.xml --><!-- From: file:/E:/AndroidProjects/CurrencyConverter/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_list_menu_item_radio.xml -->

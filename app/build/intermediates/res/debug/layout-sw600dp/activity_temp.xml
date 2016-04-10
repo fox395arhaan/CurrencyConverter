@@ -91,4 +91,4 @@
             app:adSize="SMART_BANNER"
             app:adUnitId="@string/admobBanner" />
     </LinearLayout>
-</LinearLayout><!-- From: file:/E:/AndroidProjects/CurrencyConverter/app/src/main/res/layout-sw600dp/activity_temp.xml -->
+</LinearLayout><!-- From: file:/mnt/01CDF76F1CC119A0/Project/Android/CurrencyConverter/app/src/main/res/layout-sw600dp/activity_temp.xml -->

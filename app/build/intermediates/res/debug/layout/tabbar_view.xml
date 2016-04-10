@@ -15,4 +15,4 @@
         android:singleLine="true"
         android:textColor="@color/textColor"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-</LinearLayout><!-- From: file:/E:/AndroidProjects/CurrencyConverter/app/src/main/res/layout/tabbar_view.xml -->
+</LinearLayout><!-- From: file:/mnt/01CDF76F1CC119A0/Project/Android/CurrencyConverter/app/src/main/res/layout/tabbar_view.xml -->

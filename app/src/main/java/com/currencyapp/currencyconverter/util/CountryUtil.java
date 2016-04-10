@@ -3,6 +3,7 @@ package com.currencyapp.currencyconverter.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -10,6 +11,7 @@ import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -22,6 +24,10 @@ import com.currencyapp.currencyconverter.Country;
 import com.currencyapp.currencyconverter.R;
 import com.google.gson.Gson;
 
+import org.joda.time.DateTime;
+import org.joda.time.Minutes;
+
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -38,10 +44,11 @@ public class CountryUtil {
     public static final String AllCountry = "AllCountry";
     public static final String FromValue = "FromValue";
     public static final String DateTime = "DateTime";
+    public static final String DatetimeDiff = "DatetimeDiff";
     public static final String UpdateData = "UpdateData";
     public static final String IsfirstTime = "IsfirstTime";
     public static final String LastEnteredValue = "LastEnteredValue";
-    public static final String Tovalue= "Tovalue";
+    public static final String Tovalue = "Tovalue";
     static Gson gson = MyApplication.getInstance().getGson();
     static SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy HH:mm aa");
 
@@ -89,6 +96,18 @@ public class CountryUtil {
 
         Date date = new Date();
         return Prefs.with(context).getString(DateTime, sdf.format(date));
+    }
+
+    public static void setDateAndTimeDiff(Context context) {
+        Date date = new Date();
+        String value = sdf.format(date);
+        Prefs.with(context).save(DatetimeDiff, value);
+    }
+
+    public static String getDateAndTimeDiff(Context context) {
+
+        Date date = new Date();
+        return Prefs.with(context).getString(DatetimeDiff, sdf.format(date));
     }
 
 
@@ -300,4 +319,85 @@ public class CountryUtil {
             window.setStatusBarColor(mStatusBarColor);
         }
     }
+
+    public static boolean isCallWebService(Context context) {
+
+        boolean isCalled = false;
+        try {
+
+            SharedPreferences settings = context.getSharedPreferences("PREFS_NAME", 0);
+            boolean mboolean = settings.getBoolean("FIRST_RUN", false);
+            if (!mboolean) {
+                // do the thing for the first time
+                settings = context.getSharedPreferences("PREFS_NAME", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean("FIRST_RUN", true);
+                editor.commit();
+
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                Date dt = new Date();
+
+                SharedPreferences.Editor editor2 = context.getSharedPreferences("user-pref", context.MODE_PRIVATE).edit();
+                editor2.putString("date", dateFormat.format(dt));
+                editor2.commit();
+
+                Log.e("## Cur Date", "" + dateFormat.format(dt));
+
+                isCalled = true;
+
+
+            } else {
+
+                try {
+                    SharedPreferences prefs = context.getSharedPreferences("user-pref", context.MODE_PRIVATE);
+
+                    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+                    String oldDate = prefs.getString("date", null);
+                    Date newdt = dateFormat.parse(dateFormat.format(new Date()));
+                    Date olddt = dateFormat.parse(oldDate);
+
+                    Log.e("## OLD Date", "" + olddt);
+                    Log.e("## New Date", "" + newdt);
+
+                    org.joda.time.DateTime jodaOldDate = new DateTime(olddt);
+                    DateTime jodaNewDate = new DateTime(newdt);
+
+
+                    Log.e("## hour time diff", "" + Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60);
+
+                    //Log.e("## min time diff",""+ Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60);
+
+                    if (Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60 >= 10) {
+
+                        DateFormat dateFormat2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                        Date dt = new Date();
+
+                        SharedPreferences.Editor editor2 = context.getSharedPreferences("user-pref", context.MODE_PRIVATE).edit();
+                        editor2.putString("date", dateFormat2.format(dt));
+                        editor2.commit();
+
+                        Log.e("## Cur Date chng", "" + dateFormat.format(dt));
+
+
+                        isCalled = true;
+
+
+                    }
+
+
+                } catch (Exception e) {
+                    Log.e("## EXc", e.toString());
+                }
+
+            }
+        } catch (Exception e) {
+            Log.e("#### EXc", e.toString());
+        }
+
+        return isCalled;
+    }
+
+
+
 }

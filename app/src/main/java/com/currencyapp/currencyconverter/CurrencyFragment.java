@@ -103,7 +103,6 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
         databaseHandler = new DatabaseHandler(getActivity());
 //        mProgressDialog = ProgressDialog.show(getActivity(), "Please wait", "Updating Rates");
 //        mProgressDialog.dismiss();
-        mainActivity = (MainActivity) getActivity();
 
 
     }
@@ -127,6 +126,14 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
 
     }
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d("onActivityCreated", "onStart");
+        mainActivity = (MainActivity) getActivity();
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -140,45 +147,39 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
             toCountry = CountryUtil.getToCountry(getActivity());
             setCountryNameandFlag(fromCountry, 0);
             setCountryNameandFlag(toCountry, 1);
-
             getUserSettings();
-            ///mProgressDialog.show();
             changeRateFlag();
-            if (!isOffline) {
-                if (!CountryUtil.isConnected(getActivity())) {
-
-                    offlineModeData(true);
-
-                } else {
-                    callWebService(true);
-                    if (!CountryUtil.getIsfirstTime(getActivity())) {
-
-                       // callWebServiceAll();
-                    }
-                }
-            } else {
-                offlineModeData(true);
-            }
+            offlineModeData(true);
+//            if (!isOffline) {
+//                if (!CountryUtil.isConnected(getActivity())) {
+//
+//                    offlineModeData(true);
+//
+//                } else {
+//                    callWebService(true);
+//                    if (!CountryUtil.getIsfirstTime(getActivity())) {
+//
+//                        // callWebServiceAll();
+//                    }
+//                }
+//            } else {
+//                offlineModeData(true);
+//            }
         } catch (Exception e) {
-            // mProgressDialog.dismiss();
-           // Toast.makeText(getActivity(), "unable to get data.", Toast.LENGTH_SHORT).show();
 
+            edtTo.setText("0");
         }
     }
+
     private void init(View rootView) {
 
-
         txtFrom = (CustomTextView) rootView.findViewById(R.id.txtFrom);
-
-
         txtTo = (CustomTextView) rootView.findViewById(R.id.txtTo);
         tapToLarge = (TextView) rootView.findViewById(R.id.tapToLarge);
         edtFrom = (CustomEditTextView) rootView.findViewById(R.id.edtFrom);
         edtTo = (CustomEditTextView) rootView.findViewById(R.id.edtTo);
         mProgressBar = (ProgressBar) rootView.findViewById(R.id.progressBar);
-
         edtTo.setEnabled(false);
-
         toHolder = (LinearLayout) rootView.findViewById(R.id.toHolder);
         chartHolder = (LinearLayout) rootView.findViewById(R.id.chartHolder);
         fromHolder = (LinearLayout) rootView.findViewById(R.id.fromHolder);
@@ -454,7 +455,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                                 double fromValue = Double.valueOf(edtFrom.getText().toString());
                                 double toValue = Double.valueOf(rate.Rate);
                                 double totalValue = fromValue * toValue;
-                                edtTo.setText(String.format("%.3f", totalValue));
+                                edtTo.setText(String.format("%.4f", totalValue));
                                 CountryUtil.setToValue(getActivity(), String.valueOf(totalValue));
 
                             } else {
@@ -462,7 +463,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                                 double toValue = Double.valueOf(edtTo.getText().toString());
                                 double fromValue = Double.valueOf(rate.Rate);
                                 double totalValue = fromValue * toValue;
-                                edtFrom.setText(String.format("%.3f", totalValue));
+                                edtFrom.setText(String.format("%.4f", totalValue));
                             }
 
                         } else {
@@ -472,7 +473,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                         CountryUtil.setDateAndTime(getActivity());
                         mainActivity.setLastUpdatedText();
                     } catch (Exception e) {
-                        //mProgressDialog.dismiss();
+                        edtTo.setText("0");
                     }
 
 
@@ -481,7 +482,6 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                 @Override
                 public void onFailure(Throwable t) {
                     mProgressBar.setVisibility(View.GONE);
-                    //mProgressDialog.dismiss();
                 }
             });
 
@@ -493,67 +493,15 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
 
 
     public void callWebServiceAll() {
-        //mProgressDialog.dismiss();
+
+
+        Log.e("callWebServiceAll", "callWebServiceAll");
 
         final ImageView imageView = mainActivity.refresh;
         final Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.rotation);
 
         imageView.startAnimation(animation);
 
-
-//        Call<Allcurrencies> allcurrenciesCall = allCurrencies.getAllcurrenciesCall();
-//        allcurrenciesCall.enqueue(new Callback<Allcurrencies>() {
-//            @Override
-//            public void onResponse(Response<Allcurrencies> response, Retrofit retrofit) {
-//
-//                try {
-//
-//                    Allcurrencies allcurrencies = response.body();
-//                    ArrayList<Rate> rates = new ArrayList<>();
-//
-//                    if (allcurrencies != null && allcurrencies.list.resources.size() > 0) {
-//
-//
-//                        Rate rateUSd = new Rate();
-//                        rateUSd.Rate = "1";
-//                        rates.add(rateUSd);
-//
-//
-//                        for (All all : allcurrencies.list.resources) {
-//
-//                            if (all.resource.fields.name.contains("USD/")) {
-//
-//                                String name = all.resource.fields.name.replace("USD/", "USD");
-//                                Rate rate = new Rate();
-//                                rate.id = name;
-//                                rate.Name = name;
-//                                rate.Ask = all.resource.fields.name.replace("USD/", "");
-//                                rate.Rate = all.resource.fields.price;
-//                                rates.add(rate);
-//                            }
-//
-//                        }
-//
-//                        if (rates.size() > 0) {
-//
-//                            databaseHandler.saveAllRate(rates);
-//                        }
-//                        CountryUtil.setIsfirstTime(getActivity(), true);
-//                        CountryUtil.setDateAndTime(getActivity());
-//                        mainActivity.setLastUpdatedText();
-//                    }
-//
-//                } catch (Exception e) {
-//
-//                }
-//                imageView.clearAnimation();
-//            }
-//
-//            @Override
-//            public void onFailure(Throwable t) {
-//                imageView.clearAnimation();
-//            }
-//        });
 
         final String query = getQuery(false);
         Call<YahooFinanceReal> yahooFinanceRealCall = yahoofinanceReal.getCurrency(query);
@@ -567,6 +515,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                         CountryUtil.setIsfirstTime(getActivity(), true);
                         CountryUtil.setDateAndTime(getActivity());
                         mainActivity.setLastUpdatedText();
+                        offlineModeData(true);
                     }
 
                 } catch (Exception e) {
@@ -587,15 +536,11 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    private void offlineModeData(boolean isFromEdt) {
+    public void offlineModeData(boolean isFromEdt) {
 
         try {
-
-
+            Log.e(CurrencyFragment.class.getName(), "offlineModeData");
             chartHolder.setVisibility(View.GONE);
-            //txtoffLineMode.setVisibility(View.VISIBLE);
-
-            // Toast.makeText(getActivity(), "offline", Toast.LENGTH_SHORT).show();
             fromCountry = CountryUtil.getFromCountry(getActivity());
             toCountry = CountryUtil.getToCountry(getActivity());
 
@@ -608,16 +553,19 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
             if (isFromEdt) {
                 double v = Double.valueOf(edtFrom.getText().toString());
                 finalRate = v * (toRate / fromRate);
-                edtTo.setText(String.format("%.3f", finalRate));
+                if (Double.isNaN(finalRate)) {
+                    edtTo.setText(String.format("%.4f", 0.0));
+                } else {
+                    edtTo.setText(String.format("%.4f", finalRate));
+                }
                 CountryUtil.setToValue(getActivity(), String.valueOf(finalRate));
             } else {
                 finalRate = fromRate / toRate;
-                edtFrom.setText(String.format("%.3f", finalRate));
+                edtFrom.setText(String.format("%.4f", finalRate));
             }
         } catch (Exception e) {
             edtTo.setText("0");
         }
-        //mProgressDialog.dismiss();
     }
 
     @NonNull
@@ -638,7 +586,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                 query = "select * from yahoo.finance.xchange where pair in (" + finalString + " )";
             } else {
                 finalString = fromCountry.shortName.toUpperCase() + toCountry.shortName.toUpperCase();
-                reqString = "\"" + finalString +"\""+ "," +"\""+ usd + "\"";
+                reqString = "\"" + finalString + "\"" + "," + "\"" + usd + "\"";
                 query = "select * from yahoo.finance.xchange where pair in (" + reqString + ")";
             }
         } else {
@@ -777,8 +725,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
     private void getRate() {
         if (!isOffline) {
             if (CountryUtil.isConnected(getActivity())) {
-
-                callWebService(true);
+                offlineModeData(true);
             } else {
                 offlineModeData(true);
             }

@@ -140,7 +140,7 @@ public class FavDeailsFragment extends Fragment {
 
                     } else {
                         countryName = getCountryQuery(fromCountry.shortName.toUpperCase());
-                        getRateOnline(countryName, isAnimated);
+                        getRateOffLine(countryName);
                     }
 
                 } else {
@@ -196,18 +196,23 @@ public class FavDeailsFragment extends Fragment {
     private void getRateOffLine(String countryName) {
 
 
-        if (databaseHandler == null) {
-            databaseHandler = new DatabaseHandler(getActivity());
-        }
-        rates = databaseHandler.getRateArrayList(countryName);
-        if (rates.size() > 0) {
+        try {
+            Log.e(FavDeailsFragment.class.getName(), "getRateOffLine");
+            if (databaseHandler == null) {
+                databaseHandler = new DatabaseHandler(getActivity());
+            }
+            rates = databaseHandler.getRateArrayList(countryName);
+            if (rates.size() > 0) {
 
-            mAdapter.setCountries(countries);
-        } else {
+                mAdapter.setCountries(countries);
+            } else {
 
-            Toast.makeText(getActivity(), "Turn on data Connection and Refresh the data.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Turn on data Connection and Refresh the data.", Toast.LENGTH_SHORT).show();
+            }
+
+        } catch (Exception e) {
+
         }
-        //progressDialog.dismiss();
     }
 
     private String getCountryQuery(String s) {

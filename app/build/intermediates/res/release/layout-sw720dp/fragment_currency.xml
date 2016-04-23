@@ -1,0 +1,299 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/mainHolder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/offline_bg"
+    android:orientation="vertical"
+    android:tag="sw720dp"
+    android:weightSum="3">
+
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="72dp"
+        android:visibility="visible">
+
+        <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/fromHolderCard"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_textView_editText_sizrsw20"
+            android:elevation="4dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:id="@+id/fromHolder"
+                android:layout_width="@dimen/dimen_sw720TextView_width"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <com.currencyapp.currencyconverter.widget.CustomTextView
+                    android:id="@+id/txtFrom"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="AUS"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/dimen_large_text" />
+
+                <ImageView
+                    android:id="@+id/imgFrom"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/flag_aed" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <com.currencyapp.currencyconverter.widget.CustomEditTextView
+            android:id="@+id/edtFrom"
+            android:layout_width="@dimen/dimen_sw720TextView_width"
+            android:layout_height="@dimen/dimen_textView_editText_sizrsw20"
+            android:layout_below="@+id/fromHolderCard"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rect_edit_text"
+            android:gravity="center"
+            android:inputType="number|numberDecimal"
+            android:maxLength="15"
+            android:textColor="#2D5475"
+            android:textSize="@dimen/dimen_large_text" />
+
+        <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/toHolderCard"
+            android:layout_width="wrap_content"
+            android:layout_height="108dp"
+            android:layout_alignParentRight="true"
+            android:elevation="4dp"
+            app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:id="@+id/toHolder"
+                android:layout_width="240dp"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:gravity="center"
+
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <com.currencyapp.currencyconverter.widget.CustomTextView
+                    android:id="@+id/txtTo"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="AUS"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/dimen_large_text" />
+
+                <ImageView
+                    android:id="@+id/imgTo"
+                    android:layout_width="@dimen/dimen_sw720_flag"
+                    android:layout_height="@dimen/dimen_sw720_flag"
+                    android:layout_weight="1"
+                    android:src="@drawable/flag_aed" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <com.currencyapp.currencyconverter.widget.CustomEditTextView
+            android:id="@+id/edtTo"
+            android:layout_width="@dimen/dimen_sw720TextView_width"
+            android:layout_height="@dimen/dimen_textView_editText_sizrsw20"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/toHolderCard"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rect_edit_text"
+            android:gravity="center"
+            android:inputType="number|numberDecimal"
+            android:maxLength="15"
+            android:textColor="#2D5475"
+            android:textSize="@dimen/dimen_large_text" />
+
+        <ImageView
+            android:id="@+id/imgViceversa"
+            android:layout_width="@dimen/dimen_sw720_flag"
+            android:layout_height="@dimen/dimen_sw720_flag"
+            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:src="@drawable/currency_exchange_96" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            style="@style/MyCustomTabLayoutlarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            app:tabGravity="fill"
+            app:tabMode="fixed"
+
+            />
+
+        <LinearLayout
+            android:id="@+id/tapToLargeHolder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tabs"
+            android:background="@color/white"
+            android:gravity="center"
+            android:visibility="visible">
+
+            <TextView
+
+                android:id="@+id/tapToLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Tap to Large"
+                android:textColor="@color/tap_large_color"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tapToLargeHolder"
+            android:layout_weight="1" />
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewpager"
+            ads:adSize="SMART_BANNER"
+            ads:adUnitId="ca-app-pub-6733180445570119/3279220380" />
+
+        <LinearLayout
+            android:id="@+id/chartHolder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.35"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="1dp">
+
+                <TextView
+                    android:id="@+id/textView_oneday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/oneday"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/textView_fiveday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:gravity="center"
+                    android:text="@string/fiveday"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/textView_threemonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:gravity="center"
+                    android:text="@string/threemonth"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/textView_sixmonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:gravity="center"
+                    android:text="@string/sixmonth"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/textView_oneyear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/oneyear"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/textView_twoyear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/twoyear"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/textView_fiveyear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/fiveyear"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/img_chart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitXY" />
+
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txtoffLineMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="10dp"
+            android:text="offline"
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+
+</LinearLayout><!-- From: file:/mnt/01CDF76F1CC119A0/Project/Android/CurrencyConverter/app/src/main/res/layout-sw720dp/fragment_currency.xml -->

@@ -364,12 +364,12 @@ public class CountryUtil {
                     DateTime jodaNewDate = new DateTime(newdt);
 
 
-                    Log.e("## hour time diff", "" + Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60);
+                    Log.e("## total min time diff", "" + Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes());
+                    Log.e("## min time diff", "" + Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() / 60);
 
                     //Log.e("## min time diff",""+ Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60);
 
-                    if (Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60 >= 15
-                            ) {
+                    if (Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() >= 15) {
 
                         DateFormat dateFormat2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                         Date dt = new Date();
@@ -398,7 +398,6 @@ public class CountryUtil {
 
         return isCalled;
     }
-
 
 
 }

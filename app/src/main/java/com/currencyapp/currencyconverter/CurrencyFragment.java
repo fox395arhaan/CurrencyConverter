@@ -455,7 +455,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                                 double fromValue = Double.valueOf(edtFrom.getText().toString());
                                 double toValue = Double.valueOf(rate.Rate);
                                 double totalValue = fromValue * toValue;
-                                edtTo.setText(String.format("%.4f", totalValue));
+                                edtTo.setText(String.format("%.3f", totalValue));
                                 CountryUtil.setToValue(getActivity(), String.valueOf(totalValue));
 
                             } else {
@@ -463,7 +463,7 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                                 double toValue = Double.valueOf(edtTo.getText().toString());
                                 double fromValue = Double.valueOf(rate.Rate);
                                 double totalValue = fromValue * toValue;
-                                edtFrom.setText(String.format("%.4f", totalValue));
+                                edtFrom.setText(String.format("%.3f", totalValue));
                             }
 
                         } else {
@@ -554,14 +554,14 @@ public class CurrencyFragment extends Fragment implements View.OnClickListener {
                 double v = Double.valueOf(edtFrom.getText().toString());
                 finalRate = v * (toRate / fromRate);
                 if (Double.isNaN(finalRate)) {
-                    edtTo.setText(String.format("%.4f", 0.0));
+                    edtTo.setText(String.format("%.3f", 0.0));
                 } else {
-                    edtTo.setText(String.format("%.4f", finalRate));
+                    edtTo.setText(String.format("%.3f", finalRate));
                 }
                 CountryUtil.setToValue(getActivity(), String.valueOf(finalRate));
             } else {
                 finalRate = fromRate / toRate;
-                edtFrom.setText(String.format("%.4f", finalRate));
+                edtFrom.setText(String.format("%.3f", finalRate));
             }
         } catch (Exception e) {
             edtTo.setText("0");

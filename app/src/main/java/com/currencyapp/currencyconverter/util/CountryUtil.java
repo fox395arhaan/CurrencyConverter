@@ -368,7 +368,7 @@ public class CountryUtil {
 
                     //Log.e("## min time diff",""+ Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60);
 
-                    if (Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60 >= 120
+                    if (Minutes.minutesBetween(jodaOldDate, jodaNewDate).getMinutes() % 60 >= 15
                             ) {
 
                         DateFormat dateFormat2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
     android:id="@+id/mainHolder"
     android:tag="small"
     android:layout_width="match_parent"
@@ -171,14 +172,6 @@
             android:layout_height="0dp"
             android:layout_below="@+id/tapToLargeHolder"
             android:layout_weight="1" />
-
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/adView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/viewpager"
-            ads:adSize="SMART_BANNER"
-            ads:adUnitId="ca-app-pub-6733180445570119/3279220380" />
 
         <LinearLayout
             android:id="@+id/chartHolder"

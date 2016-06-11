@@ -12,9 +12,6 @@
     <string name="canadian">CAD- Canadian Dollar</string>
     <string name="australian">AUD- Australian Dollar</string>
     <string name="indian">INR- Indian Rupee</string>
-
-    <!-- Strings used in xml -->
-
     <string name="convertor">Convertor</string>
     <string name="currency">Currency</string>
     <string name="amount">Enter Amount</string>

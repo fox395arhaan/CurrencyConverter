@@ -56,6 +56,7 @@ public class FavDeailsFragment extends Fragment {
     // private ProgressDialog progressDialog;
 
     int counter = 0;
+    double fromRateValue = 1.0;
     private MainActivity mainActivity;
 
     public FavDeailsFragment() {
@@ -125,28 +126,37 @@ public class FavDeailsFragment extends Fragment {
             @Override
             public void run() {
 
-                //progressDialog.show();
-                fromCountry = CountryUtil.getFromCountry(getActivity());
-                fromRate = databaseHandler.getRate(usd + fromCountry.shortName.toUpperCase());
-                String countryName = null;
-                if (!isOffline) {
+                try {
+                    //progressDialog.show();
+                    fromCountry = CountryUtil.getFromCountry(getActivity());
+                    fromRate = databaseHandler.getRate(usd + fromCountry.shortName.toUpperCase());
+                    fromRateValue = Double.parseDouble(fromRate.Rate);
+                    if (fromRateValue == 0) {
+                        fromRateValue = 1;
+                    }
+                    String countryName = null;
+                    if (!isOffline) {
 
-                    if (!CountryUtil.isConnected(getActivity())) {
-                        // CountryUtil.showErrorAlert(getActivity(), "No Internet Connection.Please enable offline mode.");
-                        // progressDialog.dismiss();
-                        isOffline = true;
-                        countryName = getCountryQuery(usd);
-                        getRateOffLine(countryName);
+                        if (!CountryUtil.isConnected(getActivity())) {
+                            // CountryUtil.showErrorAlert(getActivity(), "No Internet Connection.Please enable offline mode.");
+                            // progressDialog.dismiss();
+                            isOffline = true;
+                            countryName = getCountryQuery(usd);
+                            getRateOffLine(countryName);
+
+                        } else {
+                            //countryName = getCountryQuery(fromCountry.shortName.toUpperCase());
+                            countryName = getCountryQuery(usd);
+                            getRateOffLine(countryName);
+                        }
 
                     } else {
-                        countryName = getCountryQuery(fromCountry.shortName.toUpperCase());
+
+                        countryName = getCountryQuery(usd);
                         getRateOffLine(countryName);
                     }
-
-                } else {
-
-                    countryName = getCountryQuery(usd);
-                    getRateOffLine(countryName);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
             }
@@ -282,6 +292,7 @@ public class FavDeailsFragment extends Fragment {
                 if (rate.Rate != null && !rate.Rate.equalsIgnoreCase("N/A")) {
 
                     finalerate = Double.valueOf(rate.Rate);
+                    finalerate = finalerate / fromRateValue;
                     finalerate2 = v * finalerate;
                 }
 
